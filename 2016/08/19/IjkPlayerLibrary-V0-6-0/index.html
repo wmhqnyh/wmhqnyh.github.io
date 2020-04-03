@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="IjkPlayerLibraryB站开源播放器编译库(20160819),版本为Ijkplayer-k0.6.0  Ubuntu环境下编译B站开源视频播放器编译前准备Linux环境：本地使用Ubuntu Kylin 15.10 下载Linux：Java JDK，Android SDK，Android NDK，Git  Ps：由于需要编译ffmpeg，所以在配置环境变量后要保证足够磁盘空间  原来配">
+<meta name="keywords" content="ijkplayer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IjkPlayerLibrary_V0.6.0">
+<meta property="og:url" content="https//www.wangmenghua.com/2016/08/19/IjkPlayerLibrary-V0-6-0/index.html">
+<meta property="og:site_name" content="枫曾留下证明">
+<meta property="og:description" content="IjkPlayerLibraryB站开源播放器编译库(20160819),版本为Ijkplayer-k0.6.0  Ubuntu环境下编译B站开源视频播放器编译前准备Linux环境：本地使用Ubuntu Kylin 15.10 下载Linux：Java JDK，Android SDK，Android NDK，Git  Ps：由于需要编译ffmpeg，所以在配置环境变量后要保证足够磁盘空间  原来配">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-04-03T09:25:36.351Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IjkPlayerLibrary_V0.6.0">
+<meta name="twitter:description" content="IjkPlayerLibraryB站开源播放器编译库(20160819),版本为Ijkplayer-k0.6.0  Ubuntu环境下编译B站开源视频播放器编译前准备Linux环境：本地使用Ubuntu Kylin 15.10 下载Linux：Java JDK，Android SDK，Android NDK，Git  Ps：由于需要编译ffmpeg，所以在配置环境变量后要保证足够磁盘空间  原来配">
+  <link rel="canonical" href="https//www.wangmenghua.com/2016/08/19/IjkPlayerLibrary-V0-6-0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>IjkPlayerLibrary_V0.6.0 | 枫曾留下证明</title>
+  <meta name="generator" content="Hexo 3.9.0">
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">枫曾留下证明</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">11</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-algorithm">
+      
+    
+      
+    
+
+    <a href="/tags/Algorithm/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Algorithm</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2016/08/19/IjkPlayerLibrary-V0-6-0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WANG.MH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枫曾留下证明">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">IjkPlayerLibrary_V0.6.0
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2016-08-19 12:00:00" itemprop="dateCreated datePublished" datetime="2016-08-19T12:00:00+08:00">2016-08-19</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-03 17:25:36" itemprop="dateModified" datetime="2020-04-03T17:25:36+08:00">2020-04-03</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="IjkPlayerLibrary"><a href="#IjkPlayerLibrary" class="headerlink" title="IjkPlayerLibrary"></a>IjkPlayerLibrary</h1><p>B站开源播放器编译库(20160819),版本为Ijkplayer-k0.6.0  </p><h3 id="Ubuntu环境下编译B站开源视频播放器"><a href="#Ubuntu环境下编译B站开源视频播放器" class="headerlink" title="Ubuntu环境下编译B站开源视频播放器"></a>Ubuntu环境下编译B站开源视频播放器</h3><h4 id="编译前准备"><a href="#编译前准备" class="headerlink" title="编译前准备"></a>编译前准备</h4><pre><code>Linux环境：本地使用Ubuntu Kylin 15.10
+下载Linux：Java JDK，Android SDK，Android NDK，Git
+
+Ps：由于需要编译ffmpeg，所以在配置环境变量后要保证足够磁盘空间
+
+原来配置android-ndk-r11b 编译过程中报错：需要android-ndk-r10e及其之后的版本</code></pre><a id="more"></a>
+<h4 id="编译环境"><a href="#编译环境" class="headerlink" title="编译环境"></a>编译环境</h4><pre><code>Linux环境         Ubuntu Kylin 15.10
+Java 环境         JDK-1.8.0.66
+Android SDK
+Android NDK环境   android-ndk-r10e</code></pre><h4 id="主要编译命令"><a href="#主要编译命令" class="headerlink" title="主要编译命令"></a>主要编译命令</h4><p><a href="https://github.com/Bilibili/ijkplayer" target="_blank" rel="noopener">IjkPlayer：BiliBili站开源播放器</a></p>
+<pre><code>git clone https://github.com/Bilibili/ijkplayer.git ijkplayer-android
+cd ijkplayer-android
+git checkout -B latest k0.6.0
+
+./init-android.sh
+
+cd android/contrib
+./compile-ffmpeg.sh clean
+./compile-ffmpeg.sh all
+
+cd ..
+./compile-ijk.sh all</code></pre><h4 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h4><pre><code>apt-get install git</code></pre><h4 id="配置JAVA-JDK-，Android-SDK-，Android-NDK环境变量"><a href="#配置JAVA-JDK-，Android-SDK-，Android-NDK环境变量" class="headerlink" title="配置JAVA JDK ，Android SDK ，Android NDK环境变量"></a>配置JAVA JDK ，Android SDK ，Android NDK环境变量</h4><ul>
+<li><p>sudo gedit  /etc/profile</p>
+</li>
+<li><p>添加</p>
+<pre><code># Java Environment Path
+export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_66 
+export PATH=$JAVA_HOME/bin:$PATH 
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar    
+
+# set NDK env
+export ANDROID_NDK=/home/wangmh/Desktop/android-ndk-r10e
+export PATH=$PATH:$ANDROID_NDK
+#NDKROOT=/home/wangmh/Desktop/android-ndk-r11b 
+#export PATH=$NDKROOT:$PATH    
+
+# set Android_Home
+export ANDROID_HOME=/home/wangmh/Desktop/sdk
+export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH</code></pre></li>
+<li><p>Ctrl + S 保存，输入命令 sudo source /etc/profile 使其生效。</p>
+</li>
+</ul>
+<ul>
+<li><p>/etc/profile文件：</p>
+<pre><code># /etc/profile: system-wide .profile file for the Bourne shell (sh(1))
+# and Bourne compatible shells (bash(1), ksh(1), ash(1), ...).
+
+if [ &quot;$PS1&quot; ]; then
+  if [ &quot;$BASH&quot; ] &amp;&amp; [ &quot;$BASH&quot; != &quot;/bin/sh&quot; ]; then
+    # The file bash.bashrc already sets the default PS1.
+    # PS1=&apos;\h:\w\$ &apos;
+    if [ -f /etc/bash.bashrc ]; then
+      . /etc/bash.bashrc
+    fi
+  else
+    if [ &quot;`id -u`&quot; -eq 0 ]; then
+      PS1=&apos;# &apos;
+    else
+      PS1=&apos;$ &apos;
+    fi
+  fi
+fi
+
+# The default umask is now handled by pam_umask.
+# See pam_umask(8) and /etc/login.defs.
+
+if [ -d /etc/profile.d ]; then
+  for i in /etc/profile.d/*.sh; do
+    if [ -r $i ]; then
+      . $i
+    fi
+  done
+
+# Java Environment Path
+export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_66
+export PATH=$JAVA_HOME/bin:$PATH
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+
+# set NDK env
+export ANDROID_NDK=/home/wangmh/Desktop/android-ndk-r10e
+export PATH=$PATH:$ANDROID_NDK
+#NDKROOT=/home/wangmh/Desktop/android-ndk-r11b
+#export PATH=$NDKROOT:$PATH
+
+# set Android_Home
+export ANDROID_HOME=/home/wangmh/Desktop/sdk
+export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+
+  unset i
+fi        </code></pre></li>
+</ul>
+<h4 id="相关命令"><a href="#相关命令" class="headerlink" title="相关命令"></a>相关命令</h4><ul>
+<li><p>echo $PATH </p>
+</li>
+<li><pre><code>wangmh@ubuntu:~$ echo $PATH
+/home/wangmh/Desktop/sdk/tools:/home/wangmh/Desktop/sdk/platform-tools:/usr/lib/jvm/jdk1.8.0_66/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/wangmh/Desktop/android-ndk-r10e</code></pre></li>
+<li><p>java -version</p>
+</li>
+<li><pre><code>wangmh@ubuntu:~$ java -version
+java version &quot;1.8.0_66&quot;
+Java(TM) SE Runtime Environment (build 1.8.0_66-b17)
+Java HotSpot(TM) 64-Bit Server VM (build 25.66-b17, mixed mode)</code></pre></li>
+<li><p>ndk-build</p>
+<pre><code>wangmh@ubuntu:~$ ndk-build
+Android NDK: Could not find application project directory !    
+Android NDK: Please define the NDK_PROJECT_PATH variable to point to it.    
+/home/wangmh/Desktop/android-ndk-r10e/build/core/build-local.mk:143: *** Android NDK: Aborting    .  Stop.</code></pre></li>
+<li><p>打包文件夹</p>
+<pre><code>tar 压缩包输出路径  需要打包的文件夹路径
+tar -zcvf /home/wangmh/Desktop/ijk.tar.gz ijkplayer</code></pre></li>
+</ul>
+<h4 id="IjkPlayer-Proguard-Rules"><a href="#IjkPlayer-Proguard-Rules" class="headerlink" title="IjkPlayer Proguard Rules"></a>IjkPlayer Proguard Rules</h4><pre><code>-dontwarn tv.danmaku.ijk.media.player.**
+-keep class tv.danmaku.ijk.media.player.** { ; }
+-keep interface tv.danmaku.ijk.media.player.* { *; }</code></pre><h5 id="PS"><a href="#PS" class="headerlink" title="PS"></a>PS</h5><pre><code>//# required, enough for most devices.
+compile &apos;tv.danmaku.ijk.media:ijkplayer-java:0.6.0&apos;
+compile &apos;tv.danmaku.ijk.media:ijkplayer-armv7a:0.6.0&apos;
+
+//# Other ABIs: optional
+compile &apos;tv.danmaku.ijk.media:ijkplayer-armv5:0.6.0&apos;
+
+/**
+ * Error:Execution failed for task &apos;:app:processDebugManifest&apos;.
+ &gt; Manifest merger failed : uses-sdk:minSdkVersion 14 cannot be smaller than version 21 declared in library [tv.danmaku.ijk.media:ijkplayer-arm64:0.6.0] C:\Users\Administrator\Desktop\MHIjkPlayer\app\build\intermediates\exploded-aar\tv.danmaku.ijk.media\ijkplayer-arm64\0.6.0\AndroidManifest.xml
+ Suggestion: use tools:overrideLibrary=&quot;tv.danmaku.ijk.media.player_arm64&quot; to force usage
+ */
+
+//compile &apos;tv.danmaku.ijk.media:ijkplayer-arm64:0.6.0&apos;
+
+compile &apos;tv.danmaku.ijk.media:ijkplayer-x86:0.6.0&apos;
+
+/**
+ * Error:Execution failed for task &apos;:app:processDebugManifest&apos;.
+ &gt; Manifest merger failed : uses-sdk:minSdkVersion 14 cannot be smaller than version 21 declared in library [tv.danmaku.ijk.media:ijkplayer-x86_64:0.6.0] C:\Users\Administrator\Desktop\MHIjkPlayer\app\build\intermediates\exploded-aar\tv.danmaku.ijk.media\ijkplayer-x86_64\0.6.0\AndroidManifest.xml
+ Suggestion: use tools:overrideLibrary=&quot;com.example.ijkplayer_x86_64&quot; to force usage
+ */
+
+//compile &apos;tv.danmaku.ijk.media:ijkplayer-x86_64:0.6.0&apos;
+
+//# ExoPlayer as IMediaPlayer: optional, experimental
+compile &apos;tv.danmaku.ijk.media:ijkplayer-exo:0.6.0&apos;</code></pre>
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/ijkplayer/" rel="tag"># ijkplayer</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2016/08/19/TagCloud/" rel="next" title="TagCloud">
+                  <i class="fa fa-chevron-left"></i> TagCloud
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2018/03/01/Jsoup使用相关总结/" rel="prev" title="Jsoup使用相关总结">
+                  Jsoup使用相关总结 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#IjkPlayerLibrary"><span class="nav-number">1.</span> <span class="nav-text">IjkPlayerLibrary</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ubuntu环境下编译B站开源视频播放器"><span class="nav-number">1.0.1.</span> <span class="nav-text">Ubuntu环境下编译B站开源视频播放器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编译前准备"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">编译前准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编译环境"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">编译环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#主要编译命令"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">主要编译命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装Git"><span class="nav-number">1.0.1.4.</span> <span class="nav-text">安装Git</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置JAVA-JDK-，Android-SDK-，Android-NDK环境变量"><span class="nav-number">1.0.1.5.</span> <span class="nav-text">配置JAVA JDK ，Android SDK ，Android NDK环境变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相关命令"><span class="nav-number">1.0.1.6.</span> <span class="nav-text">相关命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IjkPlayer-Proguard-Rules"><span class="nav-number">1.0.1.7.</span> <span class="nav-text">IjkPlayer Proguard Rules</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#PS"><span class="nav-number">1.0.1.7.1.</span> <span class="nav-text">PS</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">WANG.MH</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">tags</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WANG.MH</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+    
+    
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script defer src="/lib/three/three.min.js"></script>
+  <script defer src="/lib/three/canvas_lines.min.js"></script>
+<script src="/js/utils.js?v=7.3.0"></script><script src="/js/motion.js?v=7.3.0"></script>
+<script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
