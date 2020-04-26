@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="final finally finalize 区别及用法final1，final修饰的class，代表不可以继承扩展。2、final的方法也是不可以重写的。3、final修饰的变量是不可以修改的。这里所谓的不可修改对于基本类型来来，的确是不可以修改。而对于引用类型来说，只能说不能重新赋值。也就是不能改变引用地址。但是作为引用类型，它内部所包含的内容如果不是final则可以随意修改">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="final&#x2F;finally&#x2F;finalize的区别">
+<meta property="og:url" content="https//www.wangmenghua.com/2020/04/08/final-finally-finalize的区别/index.html">
+<meta property="og:site_name" content="枫曾留下证明">
+<meta property="og:description" content="final finally finalize 区别及用法final1，final修饰的class，代表不可以继承扩展。2、final的方法也是不可以重写的。3、final修饰的变量是不可以修改的。这里所谓的不可修改对于基本类型来来，的确是不可以修改。而对于引用类型来说，只能说不能重新赋值。也就是不能改变引用地址。但是作为引用类型，它内部所包含的内容如果不是final则可以随意修改">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-04-08T15:47:32.562Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="final&#x2F;finally&#x2F;finalize的区别">
+<meta name="twitter:description" content="final finally finalize 区别及用法final1，final修饰的class，代表不可以继承扩展。2、final的方法也是不可以重写的。3、final修饰的变量是不可以修改的。这里所谓的不可修改对于基本类型来来，的确是不可以修改。而对于引用类型来说，只能说不能重新赋值。也就是不能改变引用地址。但是作为引用类型，它内部所包含的内容如果不是final则可以随意修改">
+  <link rel="canonical" href="https//www.wangmenghua.com/2020/04/08/final-finally-finalize的区别/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>final/finally/finalize的区别 | 枫曾留下证明</title>
+  <meta name="generator" content="Hexo 3.9.0">
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">枫曾留下证明</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">53</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-algorithm">
+      
+    
+      
+    
+
+    <a href="/tags/Algorithm/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Algorithm</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/08/final-finally-finalize的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WANG.MH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枫曾留下证明">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">final/finally/finalize的区别
+
+          
+        </h1>
+
+        <div class="post-meta">
+
+	  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-04-08 23:33:50 / Modified: 23:47:32" itemprop="dateCreated datePublished" datetime="2020-04-08T23:33:50+08:00">2020-04-08</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>final finally finalize 区别及用法</p><p>final<br>1，final修饰的class，代表不可以继承扩展。</p><p>2、final的方法也是不可以重写的。</p><p>3、final修饰的变量是不可以修改的。这里所谓的不可修改对于基本类型来来，的确是不可以修改。而对于引用类型来说，只能说不能重新赋值。也就是不能改变引用地址。但是作为引用类型，它内部所包含的内容如果不是final则可以随意修改</p><a id="more"></a>
+
+
+
+<p>finally<br>提到finally，那么try-catch就逃不掉了。finally 则是Java保证重点代码一定要被执行的一种机制。最常用的地方：通过try-catch-finally来进行类似资源释放、保证解锁等动作</p>
+<p>finalize<br>设计之初的作用就是：在CG要回收某个对象时，让这个对象有底气的大喊一声：“报告，我还能再抢救一下！”。但是也正是因为如此，JVM要对它进行额外处理。finalize也就成为了CG回收的阻碍者，也就会导致这个对象经过多个垃圾收集周期才能被回收。</p>
+<p>区别<br>一、性质不同</p>
+<p>（1）final为关键字； （2）finalize()为方法； （3）finally为为区块标志，用于try语句中；</p>
+<p>二、作用</p>
+<p>（1）final为用于标识常量的关键字，final标识的关键字存储在常量池中（在这里final常量的具体用法将在下面进行介绍）；</p>
+<p>（2）finalize()方法在Object中进行了定义，用于在对象“消失”时，由JVM进行调用用于对对象进行垃圾回收，类似于C++中的析构函数；用户自定义时，用于释放对象占用的资源（比如进行I/0操作）；</p>
+<p>（3）finally{}用于标识代码块，与try{}进行配合，不论try中的代码执行完或没有执行完（这里指有异常），该代码块之中的程序必定会进行</p>
+<p>1.简单区别：<br>final用于声明属性，方法和类，分别表示属性不可交变，方法不可覆盖，类不可继承。<br>finally是异常处理语句结构的一部分，表示总是执行。<br>finalize是Object类的一个方法，在垃圾收集器执行的时候会调用被回收对象的此方法，供垃圾收集时的其他资源回收，例如关闭文件等。<br>2.中等区别：<br>虽然这个单词在Java中都存在，但是并没太多关联：<br>final：java中的关键字，修饰符。<br>A).如果一个类被声明为final，就意味着它不能再派生出新的子类，不能作为父类被继承。因此，一个类不能同时被声明为abstract抽象类的和final的类。<br>B).如果将变量或者方法声明为final，可以保证它们在使用中不被改变.<br>　　1)被声明为final的变量必须在声明时给定初值，而在以后的引用中只能读取，不可修改。<br>　　2)被声明final的方法只能使用，不能重载。<br>finally：java的一种异常处理机制。<br>　　finally是对Java异常处理模型的最佳补充。finally结构使代码总会执行，而不管无异常发生。使用finally可以维护对象的内部状态，并可以清理非内存资源。特别是在关闭数据库连接这方面，如果程序员把数据库连接的close()方法放到finally中，就会大大降低程序出错的几率。<br>finalize：Java中的一个方法名。<br>Java技术使用finalize()方法在垃圾收集器将对象从内存中清除出去前，做必要的清理工作。这个方法是由垃圾收集器在确定这个对象没被引用时对这个对象调用的。它是在Object类中定义的，因此所的类都继承了它。子类覆盖finalize()方法以整理系统资源或者执行其他清理工作。finalize()方法是在垃圾收集器删除对象之前对这个对象调用的。<br>3.详细区别：<br>这是一道再经典不过的面试题了，我们在各个公司的面试题中几乎都能看到它的身影。final、finally和finalize虽然长得像孪生兄弟一样，但是它们的含义和用法却是大相径庭。<br>final关键字我们首先来说说final。它可以用于以下四个地方:<br>1).定义变量，包括静态的和非静态的。<br>2).定义方法的参数。<br>3).定义方法。<br>4).定义类。</p>
+<p>final</p>
+<p>用于修饰类、成员变量和成员方法。final修饰的类，不能被继承（String、StrngBuilder、StringBuffer、Math，不可变类），其中所有的方法都不能被重写，所有不能同时用abstract和final修饰（abstract修饰的是抽象类，抽象类是用于被子类继承的，和final起相反的作用）；final修饰的方法不能被重写，但是子类可以用父类中final修饰的方法；final修饰的成员变量是不可变的，如果成员变量是基本数据类型，初始化之后成员变量的值不能被改变，如果成员变量是引用类型，那么它只能指向初始化时指向的那个对象，不能再指向别的对象，但是对象中的内容是允许改变的。</p>
+<p>finally</p>
+<p>finally是在异常处理时提供finally块来执行任何清除操作。不管有没有异常被抛出、捕获都会被执行。try块中的内容是在无异常时执行到结束。catch块中的内容，是在try块内容发生catch所声明的异常时，跳转到catch块中执行。finally块则是无论异常是否发生都会执行finally块的内容，所以在代码逻辑中有需要无论发生什么都必须执行的代码，可以放在finally块中。</p>
+<p>finalize</p>
+<p>finalize是方法名，java技术允许使用finalize（）方法在垃圾收集器将对象从内存中清楚出去之前做必要的清理工作。这个方法是由垃圾收集器在确定这个对象没有被引用时对这个对象调用的，它是在Object类中定义的，因此所有的类都继承了它。子类覆盖finalize（）方法以整理系统资源或者执行其他清理工作。finalize（）方法是在垃圾收集器删除对象之前对这个对象调用的。</p>
+<p>Link:<a href="https://www.cnblogs.com/wisefulman/p/10584515.html" target="_blank" rel="noopener">https://www.cnblogs.com/wisefulman/p/10584515.html</a></p>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Java/" rel="tag"># Java</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2020/04/06/GIT提交问题/" rel="next" title="GIT提交问题">
+                  <i class="fa fa-chevron-left"></i> GIT提交问题
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2020/04/09/Android-TabLayout使用问题/" rel="prev" title="Android_TabLayout使用问题">
+                  Android_TabLayout使用问题 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">WANG.MH</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">categories</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">tags</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WANG.MH</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+    
+    
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script defer src="/lib/three/three.min.js"></script>
+  <script defer src="/lib/three/canvas_lines.min.js"></script>
+<script src="/js/utils.js?v=7.3.0"></script><script src="/js/motion.js?v=7.3.0"></script>
+<script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

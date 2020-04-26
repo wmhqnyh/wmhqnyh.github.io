@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="ServiceLoader整理主要的使用场景是和第三方库解耦，解依赖。比如模块化的时候。比如接触第三方库依赖的时候。使用步骤如下:定义接口定义接口的实现创建resources/META-INF/services目录在上一步创建的目录下创建一个以接口名(类的全名) 命名的文件, 文件的内容是实现类的类名 (类的全名), 如:在services目录下创建的文件是com.stone.imageloade">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android_ServiceLoader">
+<meta property="og:url" content="https//www.wangmenghua.com/2020/04/25/Android-ServiceLoader/index.html">
+<meta property="og:site_name" content="枫曾留下证明">
+<meta property="og:description" content="ServiceLoader整理主要的使用场景是和第三方库解耦，解依赖。比如模块化的时候。比如接触第三方库依赖的时候。使用步骤如下:定义接口定义接口的实现创建resources/META-INF/services目录在上一步创建的目录下创建一个以接口名(类的全名) 命名的文件, 文件的内容是实现类的类名 (类的全名), 如:在services目录下创建的文件是com.stone.imageloade">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-04-26T08:48:58.331Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android_ServiceLoader">
+<meta name="twitter:description" content="ServiceLoader整理主要的使用场景是和第三方库解耦，解依赖。比如模块化的时候。比如接触第三方库依赖的时候。使用步骤如下:定义接口定义接口的实现创建resources/META-INF/services目录在上一步创建的目录下创建一个以接口名(类的全名) 命名的文件, 文件的内容是实现类的类名 (类的全名), 如:在services目录下创建的文件是com.stone.imageloade">
+  <link rel="canonical" href="https//www.wangmenghua.com/2020/04/25/Android-ServiceLoader/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Android_ServiceLoader | 枫曾留下证明</title>
+  <meta name="generator" content="Hexo 3.9.0">
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">枫曾留下证明</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">53</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-algorithm">
+      
+    
+      
+    
+
+    <a href="/tags/Algorithm/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Algorithm</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/25/Android-ServiceLoader/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WANG.MH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枫曾留下证明">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Android_ServiceLoader
+
+          
+        </h1>
+
+        <div class="post-meta">
+
+	  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-04-25 13:10:33" itemprop="dateCreated datePublished" datetime="2020-04-25T13:10:33+08:00">2020-04-25</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-26 16:48:58" itemprop="dateModified" datetime="2020-04-26T16:48:58+08:00">2020-04-26</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h5 id="ServiceLoader整理"><a href="#ServiceLoader整理" class="headerlink" title="ServiceLoader整理"></a>ServiceLoader整理</h5><p>主要的使用场景是和第三方库解耦，解依赖。比如模块化的时候。比如接触第三方库依赖的时候。</p><p>使用<br>步骤如下:</p><p>定义接口<br>定义接口的实现<br>创建resources/META-INF/services目录<br>在上一步创建的目录下创建一个以接口名(类的全名) 命名的文件, 文件的内容是实现类的类名 (类的全名), 如:<br>在services目录下创建的文件是com.stone.imageloader.ImageLoader 文件中的内容为ImageLoader接口的实现类, 可能是com.stone.imageloader.impl.FrescoImageLoader<br>使用ServiceLoader查找接口的实现.</p><a id="more"></a>
+
+
+<p>原理简单分析<br>1.final，实现了Iterable<br>不能被继承，可以被迭代</p>
+<p>2.重点关注load方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;S&gt; <span class="function">ServiceLoader&lt;S&gt; <span class="title">load</span><span class="params">(Class&lt;S&gt; service,</span></span></span><br><span class="line"><span class="function"><span class="params">                                            ClassLoader loader)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ServiceLoader&lt;&gt;(service, loader);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>直接new一个新的ServiceLoader类，在实例化时会调reload方法实例化LazyIterator迭代类。</p>
+<p>3.关注LazyIterator的next方法<br>接口实现类的查找是在ServiceLoader迭代<br>时通过调用next和hasNext方法去完成。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (nextName != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (configs == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    String fullName = PREFIX + service.getName();</span><br><span class="line">                    <span class="keyword">if</span> (loader == <span class="keyword">null</span>)</span><br><span class="line">                        configs = ClassLoader.getSystemResources(fullName);</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                        configs = loader.getResources(fullName);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException x) &#123;</span><br><span class="line">                    fail(service, <span class="string">"Error locating configuration files"</span>, x);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span> ((pending == <span class="keyword">null</span>) || !pending.hasNext()) &#123;</span><br><span class="line">                <span class="keyword">if</span> (!configs.hasMoreElements()) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                pending = parse(service, configs.nextElement());</span><br><span class="line">            &#125;</span><br><span class="line">            nextName = pending.next();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> S <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (!hasNext()) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</span><br><span class="line">            &#125;</span><br><span class="line">            String cn = nextName;</span><br><span class="line">            nextName = <span class="keyword">null</span>;</span><br><span class="line">            Class&lt;?&gt; c = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                c = Class.forName(cn, <span class="keyword">false</span>, loader);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (ClassNotFoundException x) &#123;</span><br><span class="line">                fail(service,</span><br><span class="line">                     <span class="string">"Provider "</span> + cn + <span class="string">" not found"</span>, x);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (!service.isAssignableFrom(c)) &#123;</span><br><span class="line">                ClassCastException cce = <span class="keyword">new</span> ClassCastException(</span><br><span class="line">                        service.getCanonicalName() + <span class="string">" is not assignable from "</span> + c.getCanonicalName());</span><br><span class="line">                fail(service,</span><br><span class="line">                     <span class="string">"Provider "</span> + cn  + <span class="string">" not a subtype"</span>, cce);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                S p = service.cast(c.newInstance());</span><br><span class="line">                providers.put(cn, p);</span><br><span class="line">                <span class="keyword">return</span> p;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Throwable x) &#123;</span><br><span class="line">                fail(service,</span><br><span class="line">                     <span class="string">"Provider "</span> + cn + <span class="string">" could not be instantiated: "</span> + x,</span><br><span class="line">                     x);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Error();          <span class="comment">// This cannot happen</span></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>hasnext<br>我们注意到：String PREFIX = “META-INF/services/”;service.getName()得到接口的全名（包名+接口名）。调用getResources(fullName)得到配置文件的URL集合（可能有多个配置文件）。通过这个方法parse(service, configs.nextElement());，参数是接口的Class对象和配置文件的URL来解析配置文件，返回值是配置文件里面的内容，也就是实现类的全名（包名+类名）。<br>parse<br>是解析配置文件，注意：返回值是一个数组，里面就是names，实现类的全名。<br>之后<br>利用Java的反射机制，根据类的全名类创建对象。<br>这个c = Class.forName(cn, false, loader);，第一个参数是实现类的全名，第三个是类加载器，返回值是实现类的Class对象。再看下面的S p = service.cast(c.newInstance());作用是创建实例并强转成接口的类型，最后返回。</p>
+<p>缺点及改进<br>1.ServiceLoader也算是使用的延迟加载，但是基本只能通过遍历全部获取，也就是接口的实现类全部加载并实例化一遍。如果你并不想用某些实现类，它也被加载并实例化了，这就造成了浪费。<br>2.获取某个实现类的方式不够灵活，只能通过Iterator形式获取，不能根据某个参数来获取对应的实现类。<br>3.不是单例。</p>
+<p>与classloader的区别<br>JVM利用ClassLoader将类载入内存，这是一个类声明周期的第一步（一个java类的完整的生命周期会经历加载、连接、初始化、使用、和卸载五个阶段。</p>
+<p>Link：<a href="https://blog.csdn.net/a910626/article/details/78811273" target="_blank" rel="noopener">https://blog.csdn.net/a910626/article/details/78811273</a></p>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Android/" rel="tag"># Android</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2020/04/20/LeetCode算法相关记录/" rel="next" title="LeetCode 算法相关记录">
+                  <i class="fa fa-chevron-left"></i> LeetCode 算法相关记录
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2020/04/26/Android-Http1-0-1-1-2-0的区别/" rel="prev" title="Android_Http1.0/1.1/2.0的区别">
+                  Android_Http1.0/1.1/2.0的区别 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#ServiceLoader整理"><span class="nav-number">1.</span> <span class="nav-text">ServiceLoader整理</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">WANG.MH</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">categories</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">tags</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WANG.MH</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+    
+    
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script defer src="/lib/three/three.min.js"></script>
+  <script defer src="/lib/three/canvas_lines.min.js"></script>
+<script src="/js/utils.js?v=7.3.0"></script><script src="/js/motion.js?v=7.3.0"></script>
+<script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

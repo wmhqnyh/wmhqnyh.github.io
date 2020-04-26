@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="mmap内存映射具体流程如下：1、用户进程调用内存映射函数库mmap，当前进程在虚拟地址空间中，寻找一段空闲的满足要求的虚拟地址。2、此时内核收到相关请求后会调用内核的mmap函数，注意，不同于用户空间库函数。内核mmap函数通过虚拟文件系统定位到文件磁盘物理地址，既实现了文件地址和虚拟地址区域的映射关系。 此时，这片虚拟地址并没有任何数据关联到主存中。">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mmap内存映射流程">
+<meta property="og:url" content="https//www.wangmenghua.com/2020/04/04/mmap内存映射流程/index.html">
+<meta property="og:site_name" content="枫曾留下证明">
+<meta property="og:description" content="mmap内存映射具体流程如下：1、用户进程调用内存映射函数库mmap，当前进程在虚拟地址空间中，寻找一段空闲的满足要求的虚拟地址。2、此时内核收到相关请求后会调用内核的mmap函数，注意，不同于用户空间库函数。内核mmap函数通过虚拟文件系统定位到文件磁盘物理地址，既实现了文件地址和虚拟地址区域的映射关系。 此时，这片虚拟地址并没有任何数据关联到主存中。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-04-04T15:48:50.785Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mmap内存映射流程">
+<meta name="twitter:description" content="mmap内存映射具体流程如下：1、用户进程调用内存映射函数库mmap，当前进程在虚拟地址空间中，寻找一段空闲的满足要求的虚拟地址。2、此时内核收到相关请求后会调用内核的mmap函数，注意，不同于用户空间库函数。内核mmap函数通过虚拟文件系统定位到文件磁盘物理地址，既实现了文件地址和虚拟地址区域的映射关系。 此时，这片虚拟地址并没有任何数据关联到主存中。">
+  <link rel="canonical" href="https//www.wangmenghua.com/2020/04/04/mmap内存映射流程/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>mmap内存映射流程 | 枫曾留下证明</title>
+  <meta name="generator" content="Hexo 3.9.0">
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">枫曾留下证明</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">53</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-algorithm">
+      
+    
+      
+    
+
+    <a href="/tags/Algorithm/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Algorithm</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/04/mmap内存映射流程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WANG.MH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枫曾留下证明">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">mmap内存映射流程
+
+          
+        </h1>
+
+        <div class="post-meta">
+
+	  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-04-04 23:46:42 / Modified: 23:48:50" itemprop="dateCreated datePublished" datetime="2020-04-04T23:46:42+08:00">2020-04-04</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>mmap内存映射具体流程如下：</p><p>1、用户进程调用内存映射函数库mmap，当前进程在虚拟地址空间中，寻找一段空闲的满足要求的虚拟地址。</p><p>2、此时内核收到相关请求后会调用内核的mmap函数，注意，不同于用户空间库函数。内核mmap函数通过虚拟文件系统定位到文件磁盘物理地址，既实现了文件地址和虚拟地址区域的映射关系。 此时，这片虚拟地址并没有任何数据关联到主存中。</p><a id="more"></a>
+
+
+<p>注意，前两个阶段仅在于创建虚拟区间并完成地址映射，但是并没有将任何文件数据的拷贝至主存。真正的文件读取是当进程发起读或写操作时。</p>
+<p>3、进程的读或写操作访问虚拟地址空间这一段映射地址，现这一段地址并不在物理页面上。因为目前只建立了地址映射，真正的硬盘数据还没有拷贝到内存中，因此引发缺页中断。</p>
+<p>4、由于引发了缺页中断，内核则调用nopage函数把所缺的页从磁盘装入到主存中。</p>
+<p>5、之后用户进程即可对这片主存进行读或者写的操作，如果写操作改变了其内容，一定时间后系统会自动回写脏页面到对应磁盘地址，也即完成了写入到文件的过程。</p>
+<p>注意：这里拷贝磁盘内容到主存，这里的主存是指处于内核空间的Page Cache，而不是用户空间的内存。用户地址要访问内核空间中的数据，需使用MMU把虚拟地址映射到内核的内存地址中，即可对数据进行操作。</p>
+<p> 用mmap映射一个设备，意味着使用户空间的一段地址关联到设备内存上，这使得只要程序在分配的地址范围内进行读取或者写入，实际上就是对设备的访问。这种数据传输是直接的，不需要用到内核空间作为数据转移的中间站。remap_page_range（）函数的功能是构造用于映射一段物理地址的新页表，实现了内核空间与用户空间的映射。在内核驱动程序的初始化阶段，通过ioremap（）将物理地址映射到内核虚拟空间；在驱动程序的mmap系统调用中，使用remap_page_range()将该块ROM映射到用户虚拟空间。这样内核空间和用户空间都能访问这段被映射后的虚拟地址。<br>其中，进程空间mmap得到的那段虚拟地址跟IO内存对应着同一段物理地址。这个过程没有额外的数据中转，读写都直接针对硬件的物理地址进行。</p>
+<p>第二种方式就是使用内存映射的方式。具体操作方式是：open一个文件，然后调用mmap系统调用，将文件的内容的全部或一部分直接映射到进程的地址空间，映射完成后，进程可以像访问普通内存一样做其他的操作，比如memcpy等等。mmap并不分配物理地址空间，它只是占有进程的虚拟地址空间。这跟第一种方式不一样的，第一种方式需要预先分配好物理内存，内核才能将页高速缓冲中的文件数据拷贝到用户进程指定的内存空间中。</p>
+<p>而第二种方式，当多个进程需要同时访问同一个文件时，每个进程都将文件所存储的内核高速缓冲映射到自己的进程地址空间。当第一个进程访问内核中的缓冲区时候，前面讲过并没有实际拷贝数据，这时MMU在地址映射表中是无法找到与地址空间相对应的物理地址的，也就是MMU失败，就会触发缺页中断。内核将文件的这一页数据读入到内核高速缓冲区中，并更新进程的页表，使页表指向内核缓冲中的这一页。之后有其他的进程再次访问这一页的时候，该页已经在内存中了，内核只需要将进程的页表登记并且指向内核的页高速缓冲区即可。<br>————————————————<br>进程的读写操作访问虚拟地址空间的这一段映射地址，通过查询页表，发现这一段地址不在物理页面上，因为只是建立了地址映射，真正的磁盘数据还没有拷贝到内存中，因此引发缺页异常缺页异常进行一系列判断，确定无非法操作后，内核发起请求调页过程，调页过程先在交换缓存空间中寻找需要访问的内存页，如果没有则调用nopage函数把所缺的页面从磁盘装入主存中之后进程可对这片主存进行读或写操作，如果写操作改变了内容，一定时间后系统会自动回写脏页面到对应的磁盘地址，也就是完成了写入到文件的过程修改过的脏页面不会立即更新到文件中，而是有一段时间的延迟，可以调用msync来强制同步，这样所写的内容就立即保存到文件里了。</p>
+<p>总结：mmap 在进程的用户空间寻找一段满足要求的虚拟地址（只是逻辑上的一段地址，实际并不存在），内核收到mmap请求之后，定位到文件磁盘地址，并将虚拟地址跟文件地址做映射，等调用read/write时，首先会在page cache中根据address_space以及数据偏移量查询页表，发现这一段地址不在物理页面上（page cache），还没有拷贝到主存中，会触发缺页中断，调用nopage函数，把所缺的页从磁盘装入主存中，同时通过MMU将用户虚拟地址转换到内核pagecache中（做关联），此时进程就可以直接对这片主存进行读或者写了，一定时间后系统自动回写脏页面到文件中。<br><a href="https://www.jb51.net/article/98681.htm" target="_blank" rel="noopener">https://www.jb51.net/article/98681.htm</a></p>
+<p>对于共享内存映射情况，缺页异常处理程序首先在swap cache中寻找目标页（符address_space以及偏移量的物理页），如果找到，则直接返回地址；如果没有找到，则判断该页是否在交换区(swap area)，如果在，则执行一个换入操作；如果上述两种情况都不满足，处理程序将分配新的物理页面，并把它插入到page cache中。进程最终将更新进程页表。 </p>
+<p>注：对于映射普通文件情况（非共享映射），缺页异常处理程序首先会在page cache中根据address_space以及数据偏移量寻找相应的页面。如果没有找到，则说明文件数据还没有读入内存，处理程序会从磁盘读入相应的页面，并返回相应地址，同时，进程页表也会更新。                 所有进程在映射同一个共享内存区域时，情况都一样，在建立线性地址与物理地址之间的映射之后，不论进程各自的返回地址如何，实际访问的必然是同一个共享内存区域对应的物理页面。</p>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Android/" rel="tag"># Android</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2020/04/04/Java-线程-多线程-线程池相关/" rel="next" title="Java_线程_多线程_线程池相关">
+                  <i class="fa fa-chevron-left"></i> Java_线程_多线程_线程池相关
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2020/04/06/GIT提交问题/" rel="prev" title="GIT提交问题">
+                  GIT提交问题 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">WANG.MH</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">categories</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">tags</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WANG.MH</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+    
+    
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script defer src="/lib/three/three.min.js"></script>
+  <script defer src="/lib/three/canvas_lines.min.js"></script>
+<script src="/js/utils.js?v=7.3.0"></script><script src="/js/motion.js?v=7.3.0"></script>
+<script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
