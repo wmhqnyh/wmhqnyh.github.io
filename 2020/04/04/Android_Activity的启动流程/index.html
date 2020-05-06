@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="Link:https://github.com/Blankj/AndroidOfferKiller/blob/master/android/App%20%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E5%90%AB%20Activity%20%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%EF%BC%89.md">
+  <meta name="description" content="Activity的启动流程向AMS发送startActivity请求如果应用没启动，通过Socket向zygote发送启动进程请求zygote收到以后，会去启动应用进程应用进程启动之后就会向AMS发起attachApplication的IPC调用，目的是注册ApplicationThread接下来AMS会向应用发起bindApplication的IPC调用，目的是初始化应用Application完">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android_Activity的启动流程">
 <meta property="og:url" content="https//www.wangmenghua.com/2020/04/04/Android_Activity的启动流程/index.html">
 <meta property="og:site_name" content="枫曾留下证明">
-<meta property="og:description" content="Link:https://github.com/Blankj/AndroidOfferKiller/blob/master/android/App%20%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E5%90%AB%20Activity%20%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%EF%BC%89.md">
+<meta property="og:description" content="Activity的启动流程向AMS发送startActivity请求如果应用没启动，通过Socket向zygote发送启动进程请求zygote收到以后，会去启动应用进程应用进程启动之后就会向AMS发起attachApplication的IPC调用，目的是注册ApplicationThread接下来AMS会向应用发起bindApplication的IPC调用，目的是初始化应用Application完">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-04-10T10:06:44.376Z">
+<meta property="og:updated_time" content="2020-04-28T02:38:37.276Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android_Activity的启动流程">
-<meta name="twitter:description" content="Link:https://github.com/Blankj/AndroidOfferKiller/blob/master/android/App%20%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E5%90%AB%20Activity%20%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%EF%BC%89.md">
+<meta name="twitter:description" content="Activity的启动流程向AMS发送startActivity请求如果应用没启动，通过Socket向zygote发送启动进程请求zygote收到以后，会去启动应用进程应用进程启动之后就会向AMS发起attachApplication的IPC调用，目的是注册ApplicationThread接下来AMS会向应用发起bindApplication的IPC调用，目的是初始化应用Application完">
   <link rel="canonical" href="https//www.wangmenghua.com/2020/04/04/Android_Activity的启动流程/">
 
 
@@ -171,7 +171,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">53</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">74</span></a>
 
   </li>
       
@@ -269,7 +269,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-10 18:06:44" itemprop="dateModified" datetime="2020-04-10T18:06:44+08:00">2020-04-10</time>
+                <time title="Modified: 2020-04-28 10:38:37" itemprop="dateModified" datetime="2020-04-28T10:38:37+08:00">2020-04-28</time>
               </span>
             
           
@@ -298,7 +298,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Link:<a href="https://github.com/Blankj/AndroidOfferKiller/blob/master/android/App%20%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E5%90%AB%20Activity%20%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%EF%BC%89.md" target="_blank" rel="noopener">https://github.com/Blankj/AndroidOfferKiller/blob/master/android/App%20%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E5%90%AB%20Activity%20%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%EF%BC%89.md</a></p>
+        <h5 id="Activity的启动流程"><a href="#Activity的启动流程" class="headerlink" title="Activity的启动流程"></a>Activity的启动流程</h5><p>向AMS发送startActivity请求<br>如果应用没启动，通过Socket向zygote发送启动进程请求<br>zygote收到以后，会去启动应用进程<br>应用进程启动之后就会向AMS发起attachApplication的IPC调用，目的是注册ApplicationThread<br>接下来AMS会向应用发起bindApplication的IPC调用，目的是初始化应用Application<br>完了之后，AMS又向应用发起了scheduleLaunchActivity的IPC调用，目的是给应用执行和加载Activity，并且执行Activity的生命周期</p><a id="more"></a>
+<hr>
+<p>Link:</p>
+<ol>
+<li><a href="https://github.com/Blankj/AndroidOfferKiller/blob/master/android/App%20%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E5%90%AB%20Activity%20%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%EF%BC%89.md" target="_blank" rel="noopener">https://github.com/Blankj/AndroidOfferKiller/blob/master/android/App%20%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E5%90%AB%20Activity%20%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%EF%BC%89.md</a></li>
+<li><a href="https://www.jianshu.com/p/f34e5e21fa0d" target="_blank" rel="noopener">https://www.jianshu.com/p/f34e5e21fa0d</a></li>
+</ol>
 
     </div>
 
@@ -385,6 +391,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#Activity的启动流程"><span class="nav-number">1.</span> <span class="nav-text">Activity的启动流程</span></a></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
@@ -398,7 +406,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">74</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

@@ -55,15 +55,18 @@
   };
 </script>
 
-  <meta name="keywords" content="Android">
+  <meta name="description" content="Handler 整理Handler相关1.谈谈消息机制Handler作用?有哪些要素?流程是怎样的?考点：作用四大要素具体流程参考答案：Handler的作用主要是与UI线程进行通信和延迟任务执行四大要素：Message、MessageQueue、Handler、LooperMessageQueue负责消息的存储与管理，使用单链表实现，为了快速插入和删除，在其next()方法无限循环判断是否有新消息">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android_Handler部分整理">
 <meta property="og:url" content="https//www.wangmenghua.com/2020/04/10/Android-Handler部分整理/index.html">
 <meta property="og:site_name" content="枫曾留下证明">
+<meta property="og:description" content="Handler 整理Handler相关1.谈谈消息机制Handler作用?有哪些要素?流程是怎样的?考点：作用四大要素具体流程参考答案：Handler的作用主要是与UI线程进行通信和延迟任务执行四大要素：Message、MessageQueue、Handler、LooperMessageQueue负责消息的存储与管理，使用单链表实现，为了快速插入和删除，在其next()方法无限循环判断是否有新消息">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-04-26T22:54:27.705Z">
+<meta property="og:updated_time" content="2020-04-28T02:46:31.130Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android_Handler部分整理">
+<meta name="twitter:description" content="Handler 整理Handler相关1.谈谈消息机制Handler作用?有哪些要素?流程是怎样的?考点：作用四大要素具体流程参考答案：Handler的作用主要是与UI线程进行通信和延迟任务执行四大要素：Message、MessageQueue、Handler、LooperMessageQueue负责消息的存储与管理，使用单链表实现，为了快速插入和删除，在其next()方法无限循环判断是否有新消息">
   <link rel="canonical" href="https//www.wangmenghua.com/2020/04/10/Android-Handler部分整理/">
 
 
@@ -168,7 +171,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">53</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">74</span></a>
 
   </li>
       
@@ -266,7 +269,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-27 06:54:27" itemprop="dateModified" datetime="2020-04-27T06:54:27+08:00">2020-04-27</time>
+                <time title="Modified: 2020-04-28 10:46:31" itemprop="dateModified" datetime="2020-04-28T10:46:31+08:00">2020-04-28</time>
               </span>
             
           
@@ -295,7 +298,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h5 id="Handler-整理"><a href="#Handler-整理" class="headerlink" title="Handler 整理"></a>Handler 整理</h5><p>Handler相关<br>1.谈谈消息机制Handler作用?有哪些要素?流程是怎样的?<br>考点：</p><p>作用<br>四大要素<br>具体流程<br>参考答案：</p><p>Handler的作用主要是与UI线程进行通信和延迟任务执行<br>四大要素：Message、MessageQueue、Handler、Looper<br>MessageQueue负责消息的存储与管理，使用单链表实现，为了快速插入和删除，在其next()方法无限循环判断是否有新消息，有就返回并移除<br>Handler负责Message的发送和处理<br>Looper负责关联线程和分发消息，在该线程的MessageQueue中取Message，分发给Handler。<br>Looper在创建的时候会创建一个MessageQueue，调用loop()方法开始消息循环，然后不断调用MessageQueue的next()方法，有消息处理，没有就阻塞。<br>2.一个线程能否创建多个Handler，Handler跟Looper之间的对应关系？<br>对于一个线程来说，只能有一个Looper，创建Looper的时候创建一个MessageQueue，可以分发到多个Handler<br>—&gt; 可以从Looper扩展到ThreadLocal</p><a id="more"></a>
+
+
+<p>3.Handler的内存泄露原因和解决方案<br>根本原因：Handler允许延时消息和Message持有Handler，Handler作为内部类会持有外部类，如果延时期间Activity被关闭，该Activity会被泄露。<br>解决方法：Handler定义为静态内部类，内部持有Activity的弱引用，并且在onDestroy中移除所有消息</p>
+<p>4.UI设计为何都是单线程的？<br>UI采用单线程模型的原因是，加锁会让UI的访问逻辑变得复杂且低效</p>
+<p>5.Looper死循环为什么不会导致应用卡死？</p>
+<p>主线程的主要方法就是消息循环，一旦退出消息循环，表示应用退出了<br>造成ANR的原因不是主线程阻塞，而是主线程的Looper消息处理没有在预期内完成<br>阻塞和ANR没有必然联系，ANR只是消息处理机制中的一个预警机制<br>无消息时，native调用的是epoll_wait，本身阻塞，不消耗CPU时间片<br>6.Handler的延时是怎么实现的？精确吗？<br>考点：</p>
+<p>底层实现延迟的原理<br>不精确的原因？<br>如何优化？<br>参考答案：</p>
+<p>Handler如何实现延迟？<br>MessageQueue(单链表实现)的enqueue为入口调用到Message的next方法获取消息<br>进入一个for(;;)的大死循环，不断调用nativePollOnce，其中nextPollTimeoutMills为-1表示阻塞且不会超时，为0表示立即返回，大于0表示下一次唤醒的时间<br>唤醒时间是从开机开始计算的<br>不精确的原因是如果任务堆积太多或者任务很耗时，会导致Looper负载很高，进而导致卡顿<br>解决方法：从消息队列优化和Looper入手<br>队列优化(重复消息过滤、互斥消息取消、复用消息)<br>Looper：利用IdleHandler(空闲)和HandlerThread(避免主线程太挤)<br>7.可以在子线程中直接new一个Handler吗？<br>考点：</p>
+<p>子线程能否使用Handler？<br>子线程怎么使用Handler？<br>多次prepare有什么问题？<br>参考答案：</p>
+<p>直接new肯定是不可以的，主线程可以直接使用Handler是因为Activity内部包含一个Looper对象，而对于子线程来说，干干净净，没有帮我们创建Looper对象，所以需要自己手动维护，创建Looper，并开启Looper循环。<br>多次prepare会抛运行时异常&lt;为了保证一个线程对应一个Looper&gt;<br>小细节点：Message的创建可以用obtain，利用消息池化，避免生成过多的Message实例&lt;有的说默认大小是10，看28的代码是50，不过这不重要&gt;</p>
+<p>Link：<br>1: <a href="https://www.jianshu.com/p/f34e5e21fa0d" target="_blank" rel="noopener">https://www.jianshu.com/p/f34e5e21fa0d</a></p>
+
     </div>
 
     
@@ -381,6 +396,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#Handler-整理"><span class="nav-number">1.</span> <span class="nav-text">Handler 整理</span></a></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
@@ -394,7 +411,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">74</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

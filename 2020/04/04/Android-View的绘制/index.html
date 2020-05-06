@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="Android View的绘制流程">
+  <meta name="description" content="Android View的绘制流程View相关1.View树的绘制流程考点：绘制的大致流程requestLayout和invalidate区别measure核心的两个类layout的核心方法绘制的5大步骤参考答案：绘制大致流程：activity接收到焦点，就开始请求绘制布局，入口是ViewRoot的performTraversal()函数，判断是否需要重新measure、layout、draw(测">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android_View的绘制">
 <meta property="og:url" content="https//www.wangmenghua.com/2020/04/04/Android-View的绘制/index.html">
 <meta property="og:site_name" content="枫曾留下证明">
-<meta property="og:description" content="Android View的绘制流程">
+<meta property="og:description" content="Android View的绘制流程View相关1.View树的绘制流程考点：绘制的大致流程requestLayout和invalidate区别measure核心的两个类layout的核心方法绘制的5大步骤参考答案：绘制大致流程：activity接收到焦点，就开始请求绘制布局，入口是ViewRoot的performTraversal()函数，判断是否需要重新measure、layout、draw(测">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-04-26T09:10:36.092Z">
+<meta property="og:updated_time" content="2020-04-28T02:44:42.661Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android_View的绘制">
-<meta name="twitter:description" content="Android View的绘制流程">
+<meta name="twitter:description" content="Android View的绘制流程View相关1.View树的绘制流程考点：绘制的大致流程requestLayout和invalidate区别measure核心的两个类layout的核心方法绘制的5大步骤参考答案：绘制大致流程：activity接收到焦点，就开始请求绘制布局，入口是ViewRoot的performTraversal()函数，判断是否需要重新measure、layout、draw(测">
   <link rel="canonical" href="https//www.wangmenghua.com/2020/04/04/Android-View的绘制/">
 
 
@@ -171,7 +171,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">53</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">74</span></a>
 
   </li>
       
@@ -248,6 +248,10 @@
         <div class="post-meta">
 
 	  
+            <i class="fa fa-thumb-tack"></i>
+            <font color=7D26CD style="font-size:13px">置顶</font>
+            <span class="post-meta-divider">|</span>
+          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -269,7 +273,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-26 17:10:36" itemprop="dateModified" datetime="2020-04-26T17:10:36+08:00">2020-04-26</time>
+                <time title="Modified: 2020-04-28 10:44:42" itemprop="dateModified" datetime="2020-04-28T10:44:42+08:00">2020-04-28</time>
               </span>
             
           
@@ -298,7 +302,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h5 id="Android-View的绘制流程"><a href="#Android-View的绘制流程" class="headerlink" title="Android View的绘制流程"></a>Android View的绘制流程</h5>
+        <h5 id="Android-View的绘制流程"><a href="#Android-View的绘制流程" class="headerlink" title="Android View的绘制流程"></a>Android View的绘制流程</h5><p>View相关<br>1.View树的绘制流程<br>考点：</p><p>绘制的大致流程<br>requestLayout和invalidate区别<br>measure核心的两个类<br>layout的核心方法<br>绘制的5大步骤<br>参考答案：</p><p>绘制大致流程：<br>activity接收到焦点，就开始请求绘制布局，入口是ViewRoot的performTraversal()函数，判断是否需要重新measure、layout、draw(测量、摆放、绘制)<br>requestLayout和invalidate区别：<br>invalidate()请求重绘View树，即draw过程，假如视图发生大小没有变化就不会调用layout()过程，并且只绘制那些调用了invalidate()方法的 View。<br>requestLayout()当布局变化的时候，比如方向变化，尺寸的变化，会调用该方法，在自定义的视图中，如果某些情况下希望重新测量尺寸大小，应该手动去调用该方法，它会触发measure()和layout()过程，但不会进行draw<br>measure核心的两个类：LayoutParams(View自身的布局参数)、MeasureSpecs(父视图对子视图对测量要求)<br>LayoutParams注意可能的强制类型转换错误<br>MeasureSpecs有UNSPECIFIED、EXACTLY、AT_MOST(不约束、精确约束、限定最大尺寸)三种模式<br>子视图的具体位置都是相对于父视图而言的，View的onLayout方法为空实现。<br>draw的五大步骤：背景(background.draw(canvas))、自身(onDraw)、子视图(dispatchDraw)、装饰(onDrawScrollBars)<br>2.View的事件分发机制<br>点击事件产生后，首先传递给 Activity 的 dispatchTouchEvent 方法，通过 PhoneWindow 传递给 DecorView，然后再传递给根 ViewGroup,进入 ViewGroup 的 dispatchTouchEvent 方法，执行 onInterceptTouchEvent 方法判断是否拦截，再不 拦截的情况下，此时会遍历 ViewGroup 的子元素，进入子 View 的 dispatchToucnEvent 方法，如果子 view 设置了 onTouchListener,就执行 onTouch 方法，并根据 onTouch 的返回值为 true 还是 false 来决定是否执行 onTouchEvent 方法，如果是 false 则继续执行 onTouchEvent，在 onTouchEvent 的 Action Up 事件中判断，如果设置了 onClickListener，就执行 onClick 方法。</p><a id="more"></a>
+
+
+<hr>
+<p>Link：</p>
+<ol>
+<li><a href="https://www.jianshu.com/p/f34e5e21fa0d" target="_blank" rel="noopener">https://www.jianshu.com/p/f34e5e21fa0d</a></li>
+</ol>
+
     </div>
 
     
@@ -399,7 +411,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">74</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

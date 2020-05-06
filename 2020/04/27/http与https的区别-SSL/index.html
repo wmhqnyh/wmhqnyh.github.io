@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="http与https的区别1.http与https http的全称是Hypertext Transfer Protocol Vertion （超文本传输协议），说通俗点就是用网络链接传输文本信息的协议  HTTPS的全称是Secure Hypertext Transfer Protocol（安全超文本传输协议），是在http协议基础上增加了使用SSL加密传送信息的协议。 它是一个安全通信通道，它基">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="http与https的区别&#x2F;SSL">
+<meta property="og:url" content="https//www.wangmenghua.com/2020/04/27/http与https的区别-SSL/index.html">
+<meta property="og:site_name" content="枫曾留下证明">
+<meta property="og:description" content="http与https的区别1.http与https http的全称是Hypertext Transfer Protocol Vertion （超文本传输协议），说通俗点就是用网络链接传输文本信息的协议  HTTPS的全称是Secure Hypertext Transfer Protocol（安全超文本传输协议），是在http协议基础上增加了使用SSL加密传送信息的协议。 它是一个安全通信通道，它基">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-04-28T00:24:16.166Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="http与https的区别&#x2F;SSL">
+<meta name="twitter:description" content="http与https的区别1.http与https http的全称是Hypertext Transfer Protocol Vertion （超文本传输协议），说通俗点就是用网络链接传输文本信息的协议  HTTPS的全称是Secure Hypertext Transfer Protocol（安全超文本传输协议），是在http协议基础上增加了使用SSL加密传送信息的协议。 它是一个安全通信通道，它基">
+  <link rel="canonical" href="https//www.wangmenghua.com/2020/04/27/http与https的区别-SSL/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>http与https的区别/SSL | 枫曾留下证明</title>
+  <meta name="generator" content="Hexo 3.9.0">
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">枫曾留下证明</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">74</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-algorithm">
+      
+    
+      
+    
+
+    <a href="/tags/Algorithm/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Algorithm</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/27/http与https的区别-SSL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WANG.MH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枫曾留下证明">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">http与https的区别/SSL
+
+          
+        </h1>
+
+        <div class="post-meta">
+
+	  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-04-27 17:26:19" itemprop="dateCreated datePublished" datetime="2020-04-27T17:26:19+08:00">2020-04-27</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-28 08:24:16" itemprop="dateModified" datetime="2020-04-28T08:24:16+08:00">2020-04-28</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h5 id="http与https的区别"><a href="#http与https的区别" class="headerlink" title="http与https的区别"></a>http与https的区别</h5><p>1.http与https</p><ul>
+<li><p>http的全称是Hypertext Transfer Protocol Vertion （超文本传输协议），说通俗点就是用网络链接传输文本信息的协议</p>
+</li>
+<li><p>HTTPS的全称是Secure Hypertext Transfer Protocol（安全超文本传输协议），是在http协议基础上增加了使用SSL加密传送信息的协议。</p>
+<p>它是一个安全通信通道，它基于HTTP开发，用于在客户计算机和服务器之间交换信息。它使用安全套接字层(SSL)进行信息交换，简单来说它是HTTP的 安全版。 它是由Netscape开发并内置于其浏览器中，用于对数据进行压缩和解压操作，并返回网络上传送回的结果。HTTPS实际上应用了Netscape的安 全全套接字层（SSL）作为HTTP应用层的子层。（HTTPS使用端口443，而不是象HTTP那样使用端口80来和TCP/IP进行通信。）SSL使 用40 位关键字作为RC4流加密算法，这对于商业信息的加密是合适的。HTTPS和SSL支持使用X.509数字认证，如果需要的话用户可以确认发送者是谁。</p>
+</li>
+</ul><a id="more"></a>
+
+<ol start="2">
+<li>http与https的区别</li>
+</ol>
+<p>HTTPS解决的问题：</p>
+<pre><code>1 . 信任主机的问题. 采用https 的server 必须从CA 申请一个用于证明服务器用途类型的证书. 改证书只有用于对应的server 的时候，客户度才信任次主机。所以目前所有的银行系统网站，关键部分应用都是https 的，客户通过信任该证书，从而信任了该主机，其实这样做效率很低，但是银行更侧重安全。这一点对我们没有任何意义，我们的server 采用的证书不管自己issue 还是从公众的地方issue，客户端都是自己人，所以我们也就肯定信任该server。
+
+2 . 通讯过程中的数据的泄密和被窜改
+
+1）一般意义上的https, 就是 server 有一个证书.
+
+a) 主要目的是保证server 就是他声称的server. 这个跟第一点一样.
+
+b) 服务端和客户端之间的所有通讯，都是加密的.
+
+i. 具体讲，是客户端产生一个对称的密钥，通过server 的证书来交换密钥，一般意义上的握手过程。
+
+ii. 加下来所有的信息往来就都是加密的，第三方即使截获，也没有任何意义，因为他没有密钥，当然窜改也就没有什么意义了。
+
+2）少许对客户端有要求的情况下，会要求客户端也必须有一个证书。
+
+a) 这里客户端证书，其实就类似表示个人信息的时候，除了用户名/密码， 还有一个CA 认证过的身份，个人证书一般来说上别人无法模拟的，所有这样能够更深的确认自己的身份。
+
+b) 目前少数个人银行的专业版是这种做法，具体证书可能是拿U盘作为一个备份的载体。</code></pre><ol start="3">
+<li><p>SSL工作原理</p>
+<p> 3.1 协议安全机制</p>
+<p> SSL协议实现的安全机制包含：</p>
+</li>
+</ol>
+<p>a.传输数据的机密性：利用对称密钥算法对传输的数据进行加密。</p>
+<p>b.身份验证机制：基于证书利用数字签名方法对server和client进行身份验证，当中client的身份验证是可选的。</p>
+<p>c.消息完整性验证：消息传输过程中使用MAC算法来检验消息的完整性。</p>
+<pre><code>3.2 传输数据的机密性
+
+网络上传输的数据非常easy被非法用户窃取，SSL採用在通信两方之间建立加密通道的方法保证传输数据的机密性。</code></pre><p>所谓加密通道，是指发送方在发送数据前，使用加密算法和加密密钥对数据进行加密，然后将数据发送给对方。接收方接收到数据后，利用解密算法和解密密钥从密文中获取明文。没有解密密钥的第三方，无法将密文恢复为明文，从而保证传输数据的机密性。</p>
+<p>加解密算法分为两类：</p>
+<p>l              对称密钥算法：数据加密和解密时使用同样的密钥。</p>
+<p>l              非对称密钥算法：数据加密和解密时使用不同的密钥，一个是公开的公钥，一个是由用户秘密保存的私钥。</p>
+<p>利用公钥（或私钥）加密的数据仅仅能用对应的私钥（或公钥）才干解密。</p>
+<p>与非对称密钥算法相比。对称密钥算法具有计算速度快的长处，通经常使用于对大量信息进行加密（如对全部报文加密）；而非对称密钥算法，一般用于数字签名和对较少的信息进行加密。</p>
+<p>SSL加密通道上的数据加解密使用对称密钥算法。眼下主要支持的算法有DES、3DES、AES等，这些算法都能够有效地防止交互数据被窃听。</p>
+<p>对称密钥算法要求解密密钥和加密密钥全然一致。因此，利用对称密钥算法加密数据传输之前。须要在通信两端部署同样的密钥。对称密钥的部署方法请參见“2.4  利用非对称密钥算法保证密钥本身的安全”。<br>   3.3 身份验证机制</p>
+<p>   3.4 消息安整性验证</p>
+<p>   为了避免网络中传输的数据被非法篡改，SSL利用基于MD5或SHA的MAC算法来保证消息的完整性。</p>
+<p>MAC算法是在密钥參与下的数据摘要算法，能将密钥和随意长度的数据转换为固定长度的数据。</p>
+<p>MAC算法具有例如以下特征，使其可以用来验证消息的完整性：</p>
+<p>a.消息的不论什么改变，都会引起输出的固定长度数据产生变化。通过比較MAC值，可以保证接收者可以发现消息的改变。</p>
+<p>b.MAC算法须要密钥的參与。因此没有密钥的非法用户在改变消息的内容后，无法加入正确的MAC值。从而保证非法用户无法任意改动消息内容。</p>
+<p>3.5 利用非堆场密钥算法保证密钥本身的安全</p>
+<p>3.6 利用PKI保证公钥的真实性</p>
+<p>PKI通过数字证书来公布用户的公钥，并提供了验证公钥真实性的机制。数字证书（简称证书）是一个包括用户的公钥及其身份信息的文件，证明了用户与公钥的关联。</p>
+<p>数字证书由权威机构——CA签发，并由CA保证数字证书的真实性。</p>
+<ol start="4">
+<li>协议工作流程</li>
+</ol>
+<p>SSL位于应用层和传输层之间，它能够为不论什么基于TCP等可靠连接的应用层协议提供安全性保证。SSL协议本身分为两层：<br>a. 上层为SSL握手协议（SSL handshake protocol）、SSLpassword变化协议（SSL change cipher spec protocol）和SSL警告协议（SSL alert protocol）。</p>
+<p>b. 底层为SSL记录协议（SSL record protocol）。</p>
+<p>当中：</p>
+<ul>
+<li><p>SSL握手协议：是SSL协议很重要的组成部分。用来协商通信过程中使用的加密套件（加密算法、密钥交换算法和MAC算法等）、在server和client之间安全地交换密钥、实现server和client的身份验证。</p>
+</li>
+<li><p>SSLpassword变化协议：client和server端通过password变化协议通知对端。随后的报文都将使用新协商的加密套件和密钥进行保护和传输。</p>
+</li>
+<li><p>SSL警告协议：用来向通信对端报告告警信息，消息中包括告警的严重级别和描写叙述。</p>
+</li>
+<li><p>SSL记录协议：主要负责对上层的数据（SSL握手协议、SSLpassword变化协议、SSL警告协议和应用层协议报文）进行分块、计算并加入MAC值、加密。并把处理后的记录块传输给对端。</p>
+</li>
+</ul>
+<ol start="5">
+<li>握手过程</li>
+</ol>
+<p>SSL通过握手过程在client和server之间协商会话參数，并建立会话。会话包括的主要參数有会话ID、对方的证书、加密套件（密钥交换算法、数据加密算法和MAC算法等）以及主密钥（master secret）。通过SSL会话传输的数据，都将採用该会话的主密钥和加密套件进行加密、计算MAC等处理。</p>
+<p>不同情况下，SSL握手过程存在差异。</p>
+<p>以下将分别描写叙述以下三种情况下的握手过程：</p>
+<p>a. 仅仅验证server的SSL握手过程</p>
+<p>b. 验证server和client的SSL握手过程</p>
+<p>c. 恢复原有会话的SSL握手过程</p>
+<hr>
+<p>Link:<a href="https://www.cnblogs.com/bhlsheji/p/4586597.html" target="_blank" rel="noopener">https://www.cnblogs.com/bhlsheji/p/4586597.html</a></p>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Android/" rel="tag"># Android</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2020/04/27/三次握手与四次回挥手/" rel="next" title="三次握手与四次回挥手">
+                  <i class="fa fa-chevron-left"></i> 三次握手与四次回挥手
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2020/04/27/Android-Okhttp整理/" rel="prev" title="Android_Okhttp整理">
+                  Android_Okhttp整理 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#http与https的区别"><span class="nav-number">1.</span> <span class="nav-text">http与https的区别</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">WANG.MH</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">categories</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">tags</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WANG.MH</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+    
+    
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script defer src="/lib/three/three.min.js"></script>
+  <script defer src="/lib/three/canvas_lines.min.js"></script>
+<script src="/js/utils.js?v=7.3.0"></script><script src="/js/motion.js?v=7.3.0"></script>
+<script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

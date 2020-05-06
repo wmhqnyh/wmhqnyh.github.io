@@ -166,7 +166,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">53</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">74</span></a>
 
   </li>
       
@@ -222,7 +222,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/04/Moshi中遇到BigDecimal问题记录/">
+    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/06/GIT提交问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WANG.MH">
@@ -236,7 +236,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2020/04/04/Moshi中遇到BigDecimal问题记录/" class="post-title-link" itemprop="url">Moshi中遇到BigDecimal问题记录</a>
+            <a href="/2020/04/06/GIT提交问题/" class="post-title-link" itemprop="url">GIT提交问题</a>
           
         </h1>
 
@@ -253,487 +253,11 @@
                 
               
 
-              <time title="Created: 2020-04-04 11:25:00 / Modified: 11:33:53" itemprop="dateCreated datePublished" datetime="2020-04-04T11:25:00+08:00">2020-04-04</time>
+              <time title="Created: 2020-04-06 22:54:32 / Modified: 23:00:28" itemprop="dateCreated datePublished" datetime="2020-04-06T22:54:32+08:00">2020-04-06</time>
             </span>
           
             
 
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Kotlin/" itemprop="url" rel="index"><span itemprop="name">Kotlin</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h6 id="Moshi-problem-with-platform-class-BigDecimal"><a href="#Moshi-problem-with-platform-class-BigDecimal" class="headerlink" title="Moshi: problem with platform class BigDecimal"></a>Moshi: problem with platform class BigDecimal</h6><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">object</span> BigDecimalAdapter &#123;</span><br><span class="line">  <span class="meta">@FromJson</span> <span class="function"><span class="keyword">fun</span> <span class="title">fromJson</span><span class="params">(string: <span class="type">String</span>)</span></span> = BigDecimal(string)</span><br><span class="line"></span><br><span class="line">  <span class="meta">@ToJson</span> <span class="function"><span class="keyword">fun</span> <span class="title">toJson</span><span class="params">(value: <span class="type">BigDecimal</span>)</span></span> = value.toString()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> Moshi.Builder()</span><br><span class="line">    .add(BigDecimalAdapter)</span><br><span class="line">    .add(KotlinJsonAdapterFactory())</span><br><span class="line">    .build()</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2020/04/04/Moshi中遇到BigDecimal问题记录/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/04/记录一次RxJava-Zip操作符/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="WANG.MH">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="枫曾留下证明">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2020/04/04/记录一次RxJava-Zip操作符/" class="post-title-link" itemprop="url">记录一次RxJava_Zip操作符</a>
-          
-        </h1>
-
-        <div class="post-meta">
-
-	  
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2020-04-04 02:37:29 / Modified: 02:38:10" itemprop="dateCreated datePublished" datetime="2020-04-04T02:37:29+08:00">2020-04-04</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Rxjava zip操作符实现并行请求，统一结果处理</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * 随堂练习 网络请求 （说明：三个接口请求返回后统一整合并显示）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">loadPreClassPreviewData</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        Observable&lt;List&lt;PreClassPreviewInfoBean&gt;&gt; observablePreClassPreview =</span><br><span class="line">                Observable.create(<span class="keyword">new</span> Observable.OnSubscribe&lt;List&lt;PreClassPreviewInfoBean&gt;&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(<span class="keyword">final</span> Subscriber&lt;? <span class="keyword">super</span> List&lt;PreClassPreviewInfoBean&gt;&gt; subscriber)</span> </span>&#123;</span><br><span class="line">                model.loadPreClassPreviewData(selectIds, unitIds, lessonIds, <span class="keyword">new</span> ILoadDataListener() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">success</span><span class="params">(YQZYReqType api)</span> </span>&#123;</span><br><span class="line">                        <span class="keyword">if</span> (mView != <span class="keyword">null</span>) &#123;</span><br><span class="line">                            subscriber.onNext(model.getPreClassPreviewInfoBeanList());</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">error</span><span class="params">(YQZYReqType api, <span class="keyword">int</span> errorCode, String errorMessage)</span> </span>&#123;</span><br><span class="line">                        <span class="keyword">if</span> (mView != <span class="keyword">null</span>) &#123;</span><br><span class="line">                            subscriber.onError(<span class="keyword">new</span> Throwable(errorMessage));</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).onErrorReturn(<span class="keyword">new</span> Func1&lt;Throwable, List&lt;PreClassPreviewInfoBean&gt;&gt;() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> List&lt;PreClassPreviewInfoBean&gt; <span class="title">call</span><span class="params">(Throwable throwable)</span> </span>&#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line"></span><br><span class="line">        Observable&lt;List&lt;ReviewAfterInfoBean&gt;&gt; observableReviewAfter =</span><br><span class="line">                Observable.create(<span class="keyword">new</span> Observable.OnSubscribe&lt;List&lt;ReviewAfterInfoBean&gt;&gt;() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(<span class="keyword">final</span> Subscriber&lt;? <span class="keyword">super</span> List&lt;ReviewAfterInfoBean&gt;&gt; subscriber)</span> </span>&#123;</span><br><span class="line">                        model.loadReviewAfterClassData(selectIds, lessonIds, unitIds, clazzLevels, <span class="keyword">new</span></span><br><span class="line">                                ILoadDataListener() &#123;</span><br><span class="line">                                    <span class="meta">@Override</span></span><br><span class="line">                                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">success</span><span class="params">(YQZYReqType api)</span> </span>&#123;</span><br><span class="line">                                        <span class="keyword">if</span> (mView != <span class="keyword">null</span>) &#123;</span><br><span class="line">                                            subscriber.onNext(model.getReviewAfterInfoBeanList());</span><br><span class="line">                                        &#125;</span><br><span class="line">                                    &#125;</span><br><span class="line"></span><br><span class="line">                                    <span class="meta">@Override</span></span><br><span class="line">                                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">error</span><span class="params">(YQZYReqType api, <span class="keyword">int</span> errorCode, String errorMessage)</span> </span>&#123;</span><br><span class="line">                                        <span class="keyword">if</span> (mView != <span class="keyword">null</span>) &#123;</span><br><span class="line">                                            subscriber.onError(<span class="keyword">new</span> Throwable(errorMessage));</span><br><span class="line">                                        &#125;</span><br><span class="line">                                    &#125;</span><br><span class="line">                                &#125;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;).onErrorReturn(<span class="keyword">new</span> Func1&lt;Throwable, List&lt;ReviewAfterInfoBean&gt;&gt;() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> List&lt;ReviewAfterInfoBean&gt; <span class="title">call</span><span class="params">(Throwable throwable)</span> </span>&#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line"></span><br><span class="line">        Observable&lt;List&lt;HeightWrongInfoBean&gt;&gt; observableHeightWrong =</span><br><span class="line">                Observable.create(<span class="keyword">new</span> Observable.OnSubscribe&lt;List&lt;HeightWrongInfoBean&gt;&gt;() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(<span class="keyword">final</span> Subscriber&lt;? <span class="keyword">super</span> List&lt;HeightWrongInfoBean&gt;&gt; subscriber)</span> </span>&#123;</span><br><span class="line">                        model.loadHeightWrongData(selectIds, lessonIds, unitIds, <span class="keyword">new</span></span><br><span class="line">                                ILoadDataListener() &#123;</span><br><span class="line">                                    <span class="meta">@Override</span></span><br><span class="line">                                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">success</span><span class="params">(YQZYReqType api)</span> </span>&#123;</span><br><span class="line">                                        <span class="keyword">if</span> (mView != <span class="keyword">null</span>) &#123;</span><br><span class="line">                                            subscriber.onNext(model.getHeightWrongInfoBeanList());</span><br><span class="line">                                        &#125;</span><br><span class="line">                                    &#125;</span><br><span class="line"></span><br><span class="line">                                    <span class="meta">@Override</span></span><br><span class="line">                                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">error</span><span class="params">(YQZYReqType api, <span class="keyword">int</span> errorCode, String errorMessage)</span> </span>&#123;</span><br><span class="line">                                        <span class="keyword">if</span> (mView != <span class="keyword">null</span>) &#123;</span><br><span class="line">                                            subscriber.onError(<span class="keyword">new</span> Throwable(errorMessage));</span><br><span class="line">                                        &#125;</span><br><span class="line">                                    &#125;</span><br><span class="line">                                &#125;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;).onErrorReturn(<span class="keyword">new</span> Func1&lt;Throwable, List&lt;HeightWrongInfoBean&gt;&gt;() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> List&lt;HeightWrongInfoBean&gt; <span class="title">call</span><span class="params">(Throwable throwable)</span> </span>&#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line"></span><br><span class="line">        Observable.zip(observablePreClassPreview, observableReviewAfter, observableHeightWrong,</span><br><span class="line">                <span class="keyword">new</span> Func3&lt;List&lt;PreClassPreviewInfoBean&gt;, List&lt;ReviewAfterInfoBean&gt;,</span><br><span class="line">                        List&lt;HeightWrongInfoBean&gt;, ArrayList&lt;SynPracticeQuestionBean&gt;&gt;() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="keyword">public</span> ArrayList&lt;SynPracticeQuestionBean&gt;</span><br><span class="line">                    call(List&lt;PreClassPreviewInfoBean&gt; preClassPreviewInfoBeans,</span><br><span class="line">                         List&lt;ReviewAfterInfoBean&gt; reviewAfterInfoBeans,</span><br><span class="line">                         List&lt;HeightWrongInfoBean&gt; heightWrongInfoBeans) &#123;</span><br><span class="line"></span><br><span class="line">                        previewAnalyticData();</span><br><span class="line"></span><br><span class="line">                        reviewAnalyticData();</span><br><span class="line"></span><br><span class="line">                        heightWrongData();</span><br><span class="line"></span><br><span class="line">                        <span class="comment">//数据整合</span></span><br><span class="line">                        baseBean = <span class="keyword">new</span> ArrayList&lt;SynPracticeQuestionBean&gt;();</span><br><span class="line">                        <span class="keyword">if</span> (previewBeanList != <span class="keyword">null</span>) &#123;</span><br><span class="line">                            baseBean.addAll(previewBeanList);</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                        <span class="keyword">if</span> (reviewBeanList != <span class="keyword">null</span>) &#123;</span><br><span class="line">                            baseBean.addAll(reviewBeanList);</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                        <span class="keyword">if</span> (heightWrongBeanList != <span class="keyword">null</span>) &#123;</span><br><span class="line">                            baseBean.addAll(heightWrongBeanList);</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                        mView.loadSuccess();</span><br><span class="line">                        mView.refreshView(baseBean);</span><br><span class="line">                        <span class="keyword">return</span> baseBean;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;).subscribe();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/04/Algorithm-摩尔投票法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="WANG.MH">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="枫曾留下证明">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2020/04/04/Algorithm-摩尔投票法/" class="post-title-link" itemprop="url">Algorithm-摩尔投票法</a>
-          
-        </h1>
-
-        <div class="post-meta">
-
-	  
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2020-04-04 00:18:11 / Modified: 00:24:11" itemprop="dateCreated datePublished" datetime="2020-04-04T00:18:11+08:00">2020-04-04</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 摩尔投票法</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> nums</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">majorityElement</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123; </span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> num = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] != num) &#123;</span><br><span class="line">                count--;</span><br><span class="line">                <span class="keyword">if</span> (count &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                    count = <span class="number">0</span>;</span><br><span class="line">                    num = nums[i];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span></span><br><span class="line">                count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2020/04/04/Algorithm-摩尔投票法/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/03/Hexo博客相关总结(插件、主题、设置等)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="WANG.MH">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="枫曾留下证明">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2020/04/03/Hexo博客相关总结(插件、主题、设置等)/" class="post-title-link" itemprop="url">Hexo博客相关总结(插件、主题、设置等)</a>
-          
-        </h1>
-
-        <div class="post-meta">
-
-	  
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2020-04-03 05:47:00 / Modified: 23:56:50" itemprop="dateCreated datePublished" datetime="2020-04-03T05:47:00+08:00">2020-04-03</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Hexo发表文章设置多个tags：[标签1,标签2，标签3]这种方式，例如[json,fastjson]，单个不需要[],直接添加</p><p>Hexo发表文章设置多个categories：[分类1,分类2，分类3]这种方式，例如[json,fastjson]，单个不需要[],直接添加。第二种方式：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">categories:</span><br><span class="line">  - json</span><br><span class="line">  - fastjson</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2020/04/03/Hexo博客相关总结(插件、主题、设置等)/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/02/FastJson自定义解析/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="WANG.MH">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="枫曾留下证明">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2020/04/02/FastJson自定义解析/" class="post-title-link" itemprop="url">FastJson自定义解析</a>
-          
-        </h1>
-
-        <div class="post-meta">
-
-	  
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2020-04-02 23:46:19" itemprop="dateCreated datePublished" datetime="2020-04-02T23:46:19+08:00">2020-04-02</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-04 00:12:32" itemprop="dateModified" datetime="2020-04-04T00:12:32+08:00">2020-04-04</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Tools/" itemprop="url" rel="index"><span itemprop="name">Tools</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Link:<a href="https://github.com/alibaba/fastjson/wiki/SerializeFilter" target="_blank" rel="noopener">https://github.com/alibaba/fastjson/wiki/SerializeFilter</a></p><p>SerializeFilter是通过编程扩展的方式定制序列化。fastjson支持6种SerializeFilter，用于不同场景的定制序列化。</p><p>PropertyPreFilter 根据PropertyName判断是否序列化<br>PropertyFilter 根据PropertyName和PropertyValue来判断是否序列化<br>NameFilter 修改Key，如果需要修改Key,process返回值则可<br>ValueFilter 修改Value<br>BeforeFilter 序列化时在最前添加内容<br>AfterFilter 序列化时在最后添加内容</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2020/04/02/FastJson自定义解析/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/03/31/项目迁移(保留原有分支与提交)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="WANG.MH">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="枫曾留下证明">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2020/03/31/项目迁移(保留原有分支与提交)/" class="post-title-link" itemprop="url">项目迁移（Git Mirror 保留原有分支与提交）</a>
-          
-        </h1>
-
-        <div class="post-meta">
-
-	  
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2020-03-31 20:08:00" itemprop="dateCreated datePublished" datetime="2020-03-31T20:08:00+08:00">2020-03-31</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-04 00:12:33" itemprop="dateModified" datetime="2020-04-04T00:12:33+08:00">2020-04-04</time>
-              </span>
             
           
             <span class="post-meta-item">
@@ -761,11 +285,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="项目迁移（Git-Mirror-保留原有分支与提交）"><a href="#项目迁移（Git-Mirror-保留原有分支与提交）" class="headerlink" title="项目迁移（Git Mirror 保留原有分支与提交）"></a>项目迁移（Git Mirror 保留原有分支与提交）</h4><p>1.先克隆老项目的镜像<br>git clone –mirror old.git (old.git 为老项目的git地址)</p><p>2.进入老项目的目录<br>cd old.git</p><p>3.移除老项目的地址替换成新项目<br>git remote set-url –push origin  new.git (new.git 为新项目的git地址)</p>
+          <h5 id="Git-push-error-RPC-failed-result-56-HTTP-code-200-fatal-The-remote-end-hung-up-unexpectedly-fatal"><a href="#Git-push-error-RPC-failed-result-56-HTTP-code-200-fatal-The-remote-end-hung-up-unexpectedly-fatal" class="headerlink" title="Git push error: RPC failed; result=56, HTTP code = 200 fatal: The remote end hung up unexpectedly fatal"></a>Git push error: RPC failed; result=56, HTTP code = 200 fatal: The remote end hung up unexpectedly fatal</h5><p>Look here: <a href="https://flyingtomoon.com/2011/04/12/git-push-is-failed-due-to-rpc-failure-result56/" target="_blank" rel="noopener">https://flyingtomoon.com/2011/04/12/git-push-is-failed-due-to-rpc-failure-result56/</a></p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2020/03/31/项目迁移(保留原有分支与提交)/#more" rel="contents">
+              <a class="btn" href="/2020/04/06/GIT提交问题/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -794,7 +318,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/03/29/股海十三年在雪球上推荐的书/">
+    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/04/mmap内存映射流程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WANG.MH">
@@ -808,7 +332,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2020/03/29/股海十三年在雪球上推荐的书/" class="post-title-link" itemprop="url">股海十三年在雪球上推荐的书</a>
+            <a href="/2020/04/04/mmap内存映射流程/" class="post-title-link" itemprop="url">mmap内存映射流程</a>
           
         </h1>
 
@@ -825,20 +349,25 @@
                 
               
 
-              <time title="Created: 2020-03-29 23:21:15" itemprop="dateCreated datePublished" datetime="2020-03-29T23:21:15+08:00">2020-03-29</time>
+              <time title="Created: 2020-04-04 23:46:42 / Modified: 23:48:50" itemprop="dateCreated datePublished" datetime="2020-04-04T23:46:42+08:00">2020-04-04</time>
             </span>
           
             
 
             
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-31 18:05:34" itemprop="dateModified" datetime="2020-03-31T18:05:34+08:00">2020-03-31</time>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
               </span>
-            
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -852,11 +381,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="股海十三年在雪球上推荐的书"><a href="#股海十三年在雪球上推荐的书" class="headerlink" title="股海十三年在雪球上推荐的书"></a>股海十三年在雪球上推荐的书</h4><p>豆瓣地址：<a href="https://www.douban.com/note/715783068/" target="_blank" rel="noopener">https://www.douban.com/note/715783068/</a></p><p>书中自有黄金屋，在股市上体现得很明显。想靠在股市上赚钱，但是却不看书学习，人云亦云，不会有很大的收获。你不知道买入的原因，也不知道卖出的逻辑，长久以往，拿不住股票。</p><p>股海十三年在雪球上推荐的书：</p>
+          <p>mmap内存映射具体流程如下：</p><p>1、用户进程调用内存映射函数库mmap，当前进程在虚拟地址空间中，寻找一段空闲的满足要求的虚拟地址。</p><p>2、此时内核收到相关请求后会调用内核的mmap函数，注意，不同于用户空间库函数。内核mmap函数通过虚拟文件系统定位到文件磁盘物理地址，既实现了文件地址和虚拟地址区域的映射关系。 此时，这片虚拟地址并没有任何数据关联到主存中。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2020/03/29/股海十三年在雪球上推荐的书/#more" rel="contents">
+              <a class="btn" href="/2020/04/04/mmap内存映射流程/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -885,7 +414,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2019/10/31/20191031/">
+    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/04/Java-线程-多线程-线程池相关/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WANG.MH">
@@ -899,7 +428,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2019/10/31/20191031/" class="post-title-link" itemprop="url">20191031</a>
+            <a href="/2020/04/04/Java-线程-多线程-线程池相关/" class="post-title-link" itemprop="url">Java_线程_多线程_线程池相关</a>
           
         </h1>
 
@@ -916,7 +445,7 @@
                 
               
 
-              <time title="Created: 2019-10-31 00:00:00" itemprop="dateCreated datePublished" datetime="2019-10-31T00:00:00+08:00">2019-10-31</time>
+              <time title="Created: 2020-04-04 23:42:56" itemprop="dateCreated datePublished" datetime="2020-04-04T23:42:56+08:00">2020-04-04</time>
             </span>
           
             
@@ -927,7 +456,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-10 16:04:18" itemprop="dateModified" datetime="2020-04-10T16:04:18+08:00">2020-04-10</time>
+                <time title="Modified: 2020-04-10 18:11:41" itemprop="dateModified" datetime="2020-04-10T18:11:41+08:00">2020-04-10</time>
               </span>
             
           
@@ -937,7 +466,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/杂记/" itemprop="url" rel="index"><span itemprop="name">杂记</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
 
                 
                 
@@ -956,7 +485,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>这个时候,此时此刻,夜晚的望京,夜晚的北京,我是否是我自己？     —北京加班的夜晚</p>
+          <p>线程池 : <a href="https://github.com/Blankj/AndroidOfferKiller/blob/master/java/%E7%BA%BF%E7%A8%8B%E6%B1%A0.md" target="_blank" rel="noopener">https://github.com/Blankj/AndroidOfferKiller/blob/master/java/%E7%BA%BF%E7%A8%8B%E6%B1%A0.md</a></p>
 
         
       
@@ -981,7 +510,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2019/08/31/MH-WANG/">
+    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/04/Java-Map相关/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WANG.MH">
@@ -995,7 +524,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2019/08/31/MH-WANG/" class="post-title-link" itemprop="url">MH.WANG</a>
+            <a href="/2020/04/04/Java-Map相关/" class="post-title-link" itemprop="url">Java_Map相关</a>
           
         </h1>
 
@@ -1012,7 +541,7 @@
                 
               
 
-              <time title="Created: 2019-08-31 20:48:00" itemprop="dateCreated datePublished" datetime="2019-08-31T20:48:00+08:00">2019-08-31</time>
+              <time title="Created: 2020-04-04 23:42:14" itemprop="dateCreated datePublished" datetime="2020-04-04T23:42:14+08:00">2020-04-04</time>
             </span>
           
             
@@ -1023,7 +552,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-10 16:04:02" itemprop="dateModified" datetime="2020-04-10T16:04:02+08:00">2020-04-10</time>
+                <time title="Modified: 2020-04-28 10:56:19" itemprop="dateModified" datetime="2020-04-28T10:56:19+08:00">2020-04-28</time>
               </span>
             
           
@@ -1033,7 +562,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/杂记/" itemprop="url" rel="index"><span itemprop="name">杂记</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
 
                 
                 
@@ -1052,7 +581,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="MH-WANG"><a href="#MH-WANG" class="headerlink" title="MH.WANG"></a>MH.WANG</h4>
+          <ol>
+<li>HashMap与HashTable的区别</li>
+<li>HashMap与HashSet的区别</li>
+<li>HashMap与HashTable线程安全非安全问题</li>
+<li>HashMap源码实现</li>
+<li>ConcurrentHashMap</li>
+<li>扩容、死锁</li>
+</ol>
+<hr>
+<p>Link: </p>
+<ol>
+<li><a href="https://blog.csdn.net/ghw15221836342/article/details/99942711" target="_blank" rel="noopener">https://blog.csdn.net/ghw15221836342/article/details/99942711</a></li>
+</ol>
+
         
       
     </div>
@@ -1076,7 +618,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2018/03/01/Jsoup使用相关总结/">
+    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/04/Android开发日常相关整理1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WANG.MH">
@@ -1090,7 +632,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2018/03/01/Jsoup使用相关总结/" class="post-title-link" itemprop="url">Jsoup使用相关总结</a>
+            <a href="/2020/04/04/Android开发日常相关整理1/" class="post-title-link" itemprop="url">Android开发日常相关整理1</a>
           
         </h1>
 
@@ -1107,7 +649,7 @@
                 
               
 
-              <time title="Created: 2018-03-01 00:00:00" itemprop="dateCreated datePublished" datetime="2018-03-01T00:00:00+08:00">2018-03-01</time>
+              <time title="Created: 2020-04-04 23:41:03" itemprop="dateCreated datePublished" datetime="2020-04-04T23:41:03+08:00">2020-04-04</time>
             </span>
           
             
@@ -1118,7 +660,105 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-04 00:11:54" itemprop="dateModified" datetime="2020-04-04T00:11:54+08:00">2020-04-04</time>
+                <time title="Modified: 2020-04-08 23:13:31" itemprop="dateModified" datetime="2020-04-08T23:13:31+08:00">2020-04-08</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Android 开发日常相关整理</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: <span class="string">'com.android.application'</span></span><br><span class="line">apply plugin: <span class="string">'kotlin-android'</span></span><br><span class="line">apply plugin: <span class="string">'kotlin-android-extensions'</span></span><br><span class="line">apply plugin: <span class="string">'kotlin-kapt'</span></span><br><span class="line"></span><br><span class="line">android &#123;</span><br><span class="line">    compileSdkVersion build_versions.target_sdk</span><br><span class="line">    buildToolsVersion build_versions.build_tools_sdk</span><br><span class="line"></span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        applicationId <span class="string">"com.wangmh.mhproject"</span></span><br><span class="line">        minSdkVersion build_versions.min_sdk</span><br><span class="line">        targetSdkVersion build_versions.target_sdk</span><br><span class="line">        versionCode build_versions.version_code</span><br><span class="line">        versionName build_versions.version_name</span><br><span class="line"></span><br><span class="line">        multiDexEnabled <span class="keyword">true</span></span><br><span class="line"></span><br><span class="line">        buildConfigField <span class="string">"String"</span>, <span class="string">"GIT_SHA"</span>, <span class="string">"\"$&#123;commitSha()&#125;\""</span></span><br><span class="line">        buildConfigField <span class="string">"String"</span>, <span class="string">"BUILD_DATE"</span>, <span class="string">"\"$&#123;buildDate()&#125;\""</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">sourceSets</span> &#123;</span><br><span class="line">            main &#123;</span><br><span class="line">                jniLibs.srcDirs = [<span class="string">'libs'</span>]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ndk &#123;</span><br><span class="line">            abiFilters <span class="string">'armeabi'</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        android.applicationVariants.all &#123; variant -&gt;</span><br><span class="line">            renameAPK(variant, defaultConfig)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        testInstrumentationRunner <span class="string">"androidx.test.runner.AndroidJUnitRunner"</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    signingConfigs &#123;</span><br><span class="line">        debug &#123;</span><br><span class="line"><span class="comment">//            storeFile file("../debug.keystore")</span></span><br><span class="line"><span class="comment">//            storePassword "android"</span></span><br><span class="line"><span class="comment">//            keyAlias "androiddebugkey"</span></span><br><span class="line"><span class="comment">//            keyPassword "android"</span></span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        release &#123;</span></span><br><span class="line"><span class="comment">//            storeFile file("../debug.keystore")</span></span><br><span class="line"><span class="comment">//            storePassword "android"</span></span><br><span class="line"><span class="comment">//            keyAlias "androiddebugkey"</span></span><br><span class="line"><span class="comment">//            keyPassword "android"</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    buildTypes &#123;</span></span><br><span class="line"><span class="comment">//        debug &#123;</span></span><br><span class="line"><span class="comment">//            minifyEnabled false</span></span><br><span class="line"><span class="comment">//            zipAlignEnabled false</span></span><br><span class="line"><span class="comment">//            shrinkResources false</span></span><br><span class="line"><span class="comment">//            debuggable true</span></span><br><span class="line"><span class="comment">//            signingConfig signingConfigs.debug</span></span><br><span class="line"><span class="comment">//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        release &#123;</span></span><br><span class="line"><span class="comment">//            minifyEnabled false</span></span><br><span class="line"><span class="comment">//            zipAlignEnabled false</span></span><br><span class="line"><span class="comment">//            shrinkResources false</span></span><br><span class="line"><span class="comment">//            debuggable true //当前版本打开debug日志</span></span><br><span class="line"><span class="comment">//            signingConfig signingConfigs.release</span></span><br><span class="line"><span class="comment">//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line">    flavorDimensions <span class="string">"default"</span></span><br><span class="line"><span class="comment">//    productFlavors &#123;</span></span><br><span class="line"><span class="comment">//        develop &#123;</span></span><br><span class="line"><span class="comment">////            resValue "string", "app_name", "小特助手dev"</span></span><br><span class="line"><span class="comment">//            versionNameSuffix "-Dev"</span></span><br><span class="line"><span class="comment">//            applicationIdSuffix ".dev"</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//            buildConfigField "String", "BASE_URL", "\"https://aimart-public.sicaudm.com/\""</span></span><br><span class="line"><span class="comment">//            buildConfigField "String", "BASE_H5_URL", "\"https://aimart-public.sicaudm.com/\""</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//            manifestPlaceholders = [</span></span><br><span class="line"><span class="comment">//                    PACKAGE_NAME : "com.zkj.aimart.dev"</span></span><br><span class="line"><span class="comment">//            ]</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"><span class="comment">//        prod &#123;</span></span><br><span class="line"><span class="comment">////            resValue "string", "app_name", "小特助手"</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//            buildConfigField "String", "BASE_URL", "\"https://aimart.zkj.com/\""</span></span><br><span class="line"><span class="comment">//            buildConfigField "String", "BASE_H5_URL", "\"https://aimart.zkj.com/\""</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//            manifestPlaceholders = [</span></span><br><span class="line"><span class="comment">//                    PACKAGE_NAME : "com.zkj.aimart",</span></span><br><span class="line"><span class="comment">//            ]</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line">    androidExtensions &#123;</span><br><span class="line">        experimental = <span class="keyword">true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    dexOptions &#123;</span><br><span class="line">        javaMaxHeapSize <span class="string">"4g"</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    compileOptions &#123;</span><br><span class="line">        <span class="keyword">sourceCompatibility</span> build_versions.jvmTarget</span><br><span class="line">        <span class="keyword">targetCompatibility</span> build_versions.jvmTarget</span><br><span class="line">    &#125;</span><br><span class="line">    kotlinOptions &#123;</span><br><span class="line">        jvmTarget = build_versions.jvmTarget</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">    <span class="comment">// Kotlin</span></span><br><span class="line">    implementation deps.kotlin.stdlib</span><br><span class="line">    <span class="comment">// Support</span></span><br><span class="line">    implementation deps.x.multidex</span><br><span class="line">    implementation deps.x.design</span><br><span class="line">    implementation deps.x.android_ktx</span><br><span class="line">    implementation deps.x.app_compat</span><br><span class="line">    implementation deps.x.recyclerview</span><br><span class="line">    implementation deps.x.constraintlayout</span><br><span class="line">    implementation deps.x.viewpager2</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Dagger2</span></span><br><span class="line">    implementation deps.dagger.<span class="keyword">runtime</span></span><br><span class="line">    kapt deps.dagger.compiler</span><br><span class="line">    implementation deps.dagger.android</span><br><span class="line">    implementation deps.dagger.android_support</span><br><span class="line">    kapt deps.dagger.android_processor</span><br><span class="line"></span><br><span class="line">    <span class="comment">// RxJava2</span></span><br><span class="line">    implementation deps.rx.java</span><br><span class="line">    implementation deps.rx.kotlin</span><br><span class="line">    implementation deps.rx.android</span><br><span class="line"></span><br><span class="line">    <span class="comment">// AutoDispose</span></span><br><span class="line">    implementation deps.autodispose.<span class="keyword">runtime</span></span><br><span class="line">    implementation deps.autodispose.lifecycle</span><br><span class="line"><span class="comment">//    implementation deps.autodispose.lifecycle_ktx</span></span><br><span class="line">    implementation deps.autodispose.android</span><br><span class="line"><span class="comment">//    implementation deps.autodispose.android_ktx</span></span><br><span class="line">    implementation deps.autodispose.android_arch</span><br><span class="line"><span class="comment">//    implementation deps.autodispose.android_arch_ktx</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// OkIO</span></span><br><span class="line">    implementation deps.okio</span><br><span class="line">    <span class="comment">// OkHttp</span></span><br><span class="line">    implementation deps.okhttp.<span class="keyword">runtime</span></span><br><span class="line">    implementation deps.okhttp.logging_interceptor</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Retrofit</span></span><br><span class="line">    implementation deps.retrofit.<span class="keyword">runtime</span></span><br><span class="line">    implementation deps.retrofit.adapter_rxjava</span><br><span class="line">    implementation deps.retrofit.converter_moshi</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Timber</span></span><br><span class="line">    implementation deps.timber</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Arch Lifecycle</span></span><br><span class="line">    implementation deps.lifecycle.<span class="keyword">runtime</span></span><br><span class="line">    implementation deps.lifecycle.extensions</span><br><span class="line">    implementation deps.lifecycle.java8</span><br><span class="line">    kapt deps.lifecycle.compiler</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Moshi - JSON library</span></span><br><span class="line">    implementation deps.moshi.<span class="keyword">runtime</span></span><br><span class="line">    kapt deps.moshi.kotlin_codegen</span><br><span class="line"></span><br><span class="line">    <span class="comment">// xcodescanner_zbar</span></span><br><span class="line">    implementation deps.xcodescanner</span><br><span class="line"></span><br><span class="line">    <span class="comment">// AMap</span></span><br><span class="line">    implementation deps.amap.map</span><br><span class="line">    implementation deps.amap.location</span><br><span class="line"></span><br><span class="line">    <span class="comment">// AndroidAutoSize</span></span><br><span class="line">    implementation deps.autosize</span><br><span class="line"></span><br><span class="line">    <span class="comment">// RxPermissions</span></span><br><span class="line">    implementation deps.rxpermissions</span><br><span class="line"></span><br><span class="line">    <span class="comment">// BaseRecyclerViewAdapterHelper</span></span><br><span class="line">    implementation deps.recyclerviewadapter</span><br><span class="line"></span><br><span class="line">    <span class="comment">// SmartRefreshLayout &amp;&amp; SmartRefreshHeader</span></span><br><span class="line">    implementation deps.smartrefresh.layout</span><br><span class="line">    implementation deps.smartrefresh.header</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Android Picker View</span></span><br><span class="line">    implementation deps.pickerview</span><br><span class="line"></span><br><span class="line">    <span class="comment">// xinge push</span></span><br><span class="line"><span class="comment">//    implementation deps.xg.xg</span></span><br><span class="line"><span class="comment">//    implementation deps.xg.jg</span></span><br><span class="line"><span class="comment">//    implementation deps.xg.wup</span></span><br><span class="line"><span class="comment">//    implementation deps.xg.mid</span></span><br><span class="line"><span class="comment">//    implementation deps.xg.xiaomi</span></span><br><span class="line"><span class="comment">//    implementation deps.xg.meizu</span></span><br><span class="line"><span class="comment">//    implementation deps.xg.huawei</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// WebView框架</span></span><br><span class="line"><span class="comment">//    implementation project(':shangouh5module')</span></span><br><span class="line"></span><br><span class="line">    implementation <span class="string">'com.yanzhenjie:permission:1.0.8'</span></span><br><span class="line">    implementation <span class="keyword">fileTree</span>(<span class="keyword">include</span>: [<span class="string">'*.jar'</span>], dir: <span class="string">'libs'</span>)</span><br><span class="line">    implementation deps.qrcode_zxing</span><br><span class="line"><span class="comment">//    implementation deps.qrcode_zbar</span></span><br><span class="line"></span><br><span class="line">    implementation deps.glide.glide</span><br><span class="line">    kapt deps.glide.compiler</span><br><span class="line"></span><br><span class="line">    implementation deps.numberbutton</span><br><span class="line">    implementation deps.androidutilcode</span><br><span class="line"></span><br><span class="line">    <span class="comment">//蒲公英sdk主要是更新</span></span><br><span class="line"><span class="comment">//    implementation deps.updatesdk</span></span><br><span class="line"></span><br><span class="line">    implementation <span class="keyword">project</span>(<span class="string">':baseLib'</span>)</span><br><span class="line">    implementation <span class="keyword">project</span>(<span class="string">':mainLib'</span>)</span><br><span class="line">    implementation <span class="keyword">project</span>(<span class="string">':userLib'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> commitSha() &#123;</span><br><span class="line">    <span class="keyword">def</span> value = <span class="string">''</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">def</span> git = <span class="keyword">new</span> <span class="keyword">File</span>(<span class="keyword">project</span>.rootDir, <span class="string">".git"</span>)</span><br><span class="line">        <span class="keyword">def</span> head = <span class="keyword">new</span> <span class="keyword">File</span>(git, <span class="string">"HEAD"</span>)</span><br><span class="line">        <span class="keyword">def</span> ref = <span class="keyword">new</span> <span class="keyword">File</span>(git, head.text</span><br><span class="line">                .replace(<span class="string">"\n"</span>, <span class="string">""</span>)</span><br><span class="line">                .split(<span class="string">" "</span>)[<span class="number">1</span>])</span><br><span class="line">        value = ref.text.substring(<span class="number">0</span>, <span class="number">7</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// value = 'git rev-parse --short HEAD'.execute([], project.rootDir).printText.trim()</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> value</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">def</span> buildDate() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Date().format(<span class="string">"yyyy-MM-dd"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 修改打包apk名称</span></span><br><span class="line"><span class="comment"> * @param variant</span></span><br><span class="line"><span class="comment"> * @param defaultConfig</span></span><br><span class="line"><span class="comment"> * @return</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">def</span> renameAPK(variant, defaultConfig) &#123;</span><br><span class="line">    variant.outputs.all &#123; output -&gt;</span><br><span class="line">        <span class="keyword">def</span> applicationName = <span class="string">"youxuan_helper"</span></span><br><span class="line">        applicationName += <span class="string">"_$&#123;variant.buildType.name&#125;"</span></span><br><span class="line">        <span class="keyword">def</span> formattedDate = <span class="keyword">new</span> Date().format(<span class="string">'yyyyMMdd'</span>)</span><br><span class="line">        <span class="keyword">def</span> fileName = applicationName + <span class="string">"_v"</span> + defaultConfig.versionName + <span class="string">"_"</span> + formattedDate + <span class="string">".apk"</span></span><br><span class="line">        outputFileName = fileName</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/04/DevelopToolsForMac/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WANG.MH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枫曾留下证明">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/04/04/DevelopToolsForMac/" class="post-title-link" itemprop="url">DevelopToolsForMac</a>
+          
+        </h1>
+
+        <div class="post-meta">
+
+	  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-04-04 23:39:52" itemprop="dateCreated datePublished" datetime="2020-04-04T23:39:52+08:00">2020-04-04</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-08 23:27:21" itemprop="dateModified" datetime="2020-04-08T23:27:21+08:00">2020-04-08</time>
               </span>
             
           
@@ -1147,16 +787,414 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Jsoup地址以及相关文档:<a href="https://jsoup.org/" target="_blank" rel="noopener">https://jsoup.org/</a></p><h5 id="NewsyunUtils"><a href="#NewsyunUtils" class="headerlink" title="NewsyunUtils"></a>NewsyunUtils</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 1.根据后台返回的json数据得到contentText</span></span><br><span class="line"><span class="comment">     * 2.ContentText解析成Document</span></span><br><span class="line"><span class="comment">     * 3.遍历得到所有的视频标签&lt;video&gt;&lt;/video&gt;以及音频标签&lt;audio&gt;&lt;/audio&gt;</span></span><br><span class="line"><span class="comment">     * 4.判断src是否为相对地址，如果是修改为添加域名的绝对地址</span></span><br><span class="line"><span class="comment">     * 5.移除所有标签中无效的属性和参数</span></span><br><span class="line"><span class="comment">     * 6.返回处理过后body当中的内容</span></span><br><span class="line"><span class="comment">     * &lt;p&gt;</span></span><br><span class="line"><span class="comment">     * //String audioNew = newContentText.replace(audio.toString(),"&lt;audio controls=\"controls\" width=\"100%\" height=\"50px\" src=\"http://10.9.1.11:8888/newsyun/u/cms/www/201712/20171220075904860.mp3\"&gt;&lt;/audio&gt;");</span></span><br><span class="line"><span class="comment">     * //String videoNew = newContentText.replace(video.toString(),"&lt;video controls=\"controls\" width=\"100%\" height=\"200px\" src=\"http://10.9.1.11:8888/newsyun/u/cms/www/201712/20171220075834530.mp4\"&gt;&lt;/video&gt;");</span></span><br><span class="line"><span class="comment">     * //&lt;video controls="controls" width="480" height="400" src="/newsyun/u/cms/www/201712/20171220075834530.mp4"&gt;&lt;/video&gt;</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> contentText</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">handleContentBodyHtml</span><span class="params">(String contentText)</span> </span>&#123;</span><br><span class="line">        Document document = Jsoup.parse(contentText);</span><br><span class="line">        Element body = document.body();</span><br><span class="line"></span><br><span class="line">        Elements imgs = body.getElementsByTag(<span class="string">"img"</span>);</span><br><span class="line">        <span class="keyword">for</span> (Element img : imgs) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!img.attr(<span class="string">"src"</span>).startsWith(<span class="string">"http"</span>) &amp;&amp; !img.attr(<span class="string">"src"</span>).startsWith(<span class="string">"https"</span>)) &#123;</span><br><span class="line">                img.attr(<span class="string">"src"</span>, HttpConstants.HOST_IP + img.attr(<span class="string">"src"</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Elements objects = body.getElementsByTag(<span class="string">"object"</span>);</span><br><span class="line">        <span class="keyword">for</span> (Element object : objects) &#123;</span><br><span class="line">            String nodeName = object.parentNode().nodeName();</span><br><span class="line">            <span class="comment">//判断后台给予的object对象的父节点是什么，body,video,audio</span></span><br><span class="line">            <span class="keyword">if</span> (nodeName.equals(<span class="string">"body"</span>)) &#123;    <span class="comment">//说明后台是格式化一键排版之后的代码</span></span><br><span class="line">                <span class="comment">//如果不是body，说明是在video或者audio里面的属性</span></span><br><span class="line"><span class="comment">//				if (object.attr("src").endsWith("mp3"))&#123;</span></span><br><span class="line"><span class="comment">//					object.toString().replace(object.toString(),"&lt;audio controls=\"controls\" width=\"100%\" height=\"50px\" src=\"http://10.9.1.11:8888/newsyun/u/cms/www/201712/20171220075904860.mp3\");</span></span><br><span class="line"><span class="comment">//				&#125;else&#123;</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//				&#125;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取body中所有audio的元素</span></span><br><span class="line">        Elements audios = body.getElementsByTag(<span class="string">"audio"</span>);</span><br><span class="line">        <span class="keyword">for</span> (Element audio : audios) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!audio.attr(<span class="string">"src"</span>).startsWith(<span class="string">"http"</span>) &amp;&amp; !audio.attr(<span class="string">"src"</span>).startsWith(<span class="string">"https"</span>)) &#123;</span><br><span class="line">                audio.attr(<span class="string">"src"</span>, HttpConstants.HOST_IP + audio.attr(<span class="string">"src"</span>));</span><br><span class="line">            &#125;</span><br><span class="line">            audio.removeAttr(<span class="string">"style"</span>);</span><br><span class="line">            audio.removeAttr(<span class="string">"loop"</span>);</span><br><span class="line">            audio.removeAttr(<span class="string">"autoplay"</span>);</span><br><span class="line">            audio.addClass(<span class="string">"newsyun_video_or_audio"</span>);</span><br><span class="line">            audio.attr(<span class="string">"id"</span>, <span class="string">"newsyun_video_or_audio"</span>);</span><br><span class="line">            audio.children().remove();</span><br><span class="line">            audio.attr(<span class="string">"width"</span>, <span class="string">"100%"</span>);</span><br><span class="line">            audio.attr(<span class="string">"height"</span>, <span class="string">"50px"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取body中所有video的元素，遍历所有的标签</span></span><br><span class="line">        Elements videos = body.getElementsByTag(<span class="string">"video"</span>);</span><br><span class="line">        <span class="keyword">for</span> (Element video : videos) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!video.attr(<span class="string">"src"</span>).startsWith(<span class="string">"http"</span>) &amp;&amp; !video.attr(<span class="string">"src"</span>).startsWith(<span class="string">"https"</span>)) &#123;</span><br><span class="line">                video.attr(<span class="string">"src"</span>, HttpConstants.HOST_IP + video.attr(<span class="string">"src"</span>));</span><br><span class="line">            &#125;</span><br><span class="line">            video.removeAttr(<span class="string">"style"</span>);</span><br><span class="line">            video.removeAttr(<span class="string">"loop"</span>);</span><br><span class="line">            video.removeAttr(<span class="string">"autoplay"</span>);</span><br><span class="line">            video.addClass(<span class="string">"newsyun_video_or_audio"</span>);</span><br><span class="line">            video.attr(<span class="string">"id"</span>, <span class="string">"newsyun_video_or_audio"</span>);</span><br><span class="line">            video.children().remove();</span><br><span class="line">            video.attr(<span class="string">"width"</span>, <span class="string">"100%"</span>);</span><br><span class="line">            video.attr(<span class="string">"height"</span>, <span class="string">"200px"</span>);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//return body.children().toString();</span></span><br><span class="line">        <span class="keyword">return</span> body.toString();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
+          <h5 id="日常开发所用工具"><a href="#日常开发所用工具" class="headerlink" title="日常开发所用工具"></a>日常开发所用工具</h5><ul>
+<li>Android Studio </li>
+<li>IDEA</li>
+<li>GIT</li>
+<li>SourceTree</li>
+<li>MWeb</li>
+<li>Sublime Text 3</li>
+<li>VScode</li>
+<li>iTerm</li>
+<li>TeamViewer</li>
+<li>Charles</li>
+<li>Postman</li>
+<li>Dash</li>
+<li>Google Chrome</li>
+<li>Firefox</li>
+<li>CheatSheet</li>
+<li>Alfred</li>
+<li>Paste</li>
+<li>XMind</li>
+<li>奇妙清单</li>
+<li>1Password</li>
+<li>Mounty</li>
+<li>其他：Email类软件、解压缩、系统工具等</li>
+</ul>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/04/Android-图片框架整理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WANG.MH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枫曾留下证明">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/04/04/Android-图片框架整理/" class="post-title-link" itemprop="url">Android_图片框架整理</a>
           
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/03/01/Jsoup使用相关总结/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
+        </h1>
+
+        <div class="post-meta">
+
+	  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-04-04 23:39:19" itemprop="dateCreated datePublished" datetime="2020-04-04T23:39:19+08:00">2020-04-04</time>
+            </span>
           
-          <!--/noindex-->
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-10 15:52:29" itemprop="dateModified" datetime="2020-04-10T15:52:29+08:00">2020-04-10</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Glide/Picasso/UIL/Fresco</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用来阻止滑动加载图片</span></span><br><span class="line">        mCommonRecyclerView.addOnScrollListener(<span class="keyword">new</span> RecyclerView.OnScrollListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrollStateChanged</span><span class="params">(RecyclerView recyclerView, <span class="keyword">int</span> newState)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">super</span>.onScrollStateChanged(recyclerView, newState);</span><br><span class="line">                <span class="keyword">if</span> (newState == RecyclerView.SCROLL_STATE_DRAGGING || newState == RecyclerView.SCROLL_STATE_SETTLING) &#123;</span><br><span class="line">                    sIsScrolling = <span class="keyword">true</span>;</span><br><span class="line">                    <span class="keyword">if</span> (!isRemoving()) &#123;</span><br><span class="line">                        Glide.with(INewsyunBaseFragment.<span class="keyword">this</span>).pauseRequests();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (newState == RecyclerView.SCROLL_STATE_IDLE) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (sIsScrolling) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (!isRemoving()) &#123;</span><br><span class="line">                            Glide.with(INewsyunBaseFragment.<span class="keyword">this</span>).resumeRequests();</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                    &#125;</span><br><span class="line">                    sIsScrolling = <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/04/Android-AsyncTask的源码分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WANG.MH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枫曾留下证明">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/04/04/Android-AsyncTask的源码分析/" class="post-title-link" itemprop="url">Android_AsyncTask的源码分析</a>
+          
+        </h1>
+
+        <div class="post-meta">
+
+	  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-04-04 23:38:48" itemprop="dateCreated datePublished" datetime="2020-04-04T23:38:48+08:00">2020-04-04</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-08 23:29:33" itemprop="dateModified" datetime="2020-04-08T23:29:33+08:00">2020-04-08</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/04/Android动画整理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WANG.MH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枫曾留下证明">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/04/04/Android动画整理/" class="post-title-link" itemprop="url">Android动画整理</a>
+          
+        </h1>
+
+        <div class="post-meta">
+
+	  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-04-04 23:37:40" itemprop="dateCreated datePublished" datetime="2020-04-04T23:37:40+08:00">2020-04-04</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-08 23:29:33" itemprop="dateModified" datetime="2020-04-08T23:29:33+08:00">2020-04-08</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/04/Android事件分发机制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WANG.MH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枫曾留下证明">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/04/04/Android事件分发机制/" class="post-title-link" itemprop="url">Android事件分发机制</a>
+          
+        </h1>
+
+        <div class="post-meta">
+
+	  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-04-04 23:36:45" itemprop="dateCreated datePublished" datetime="2020-04-04T23:36:45+08:00">2020-04-04</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-26 17:10:17" itemprop="dateModified" datetime="2020-04-26T17:10:17+08:00">2020-04-26</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="Android事件分发机制"><a href="#Android事件分发机制" class="headerlink" title="Android事件分发机制"></a>Android事件分发机制</h5>
         
       
     </div>
@@ -1179,7 +1217,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1224,7 +1262,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">74</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

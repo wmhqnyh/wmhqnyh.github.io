@@ -166,7 +166,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">53</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">74</span></a>
 
   </li>
       
@@ -222,7 +222,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2016/08/19/IjkPlayerLibrary-V0-6-0/">
+    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/04/Android_Activity的启动流程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WANG.MH">
@@ -236,7 +236,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2016/08/19/IjkPlayerLibrary-V0-6-0/" class="post-title-link" itemprop="url">IjkPlayerLibrary_V0.6.0</a>
+            <a href="/2020/04/04/Android_Activity的启动流程/" class="post-title-link" itemprop="url">Android_Activity的启动流程</a>
           
         </h1>
 
@@ -253,7 +253,7 @@
                 
               
 
-              <time title="Created: 2016-08-19 12:00:00" itemprop="dateCreated datePublished" datetime="2016-08-19T12:00:00+08:00">2016-08-19</time>
+              <time title="Created: 2020-04-04 23:36:08" itemprop="dateCreated datePublished" datetime="2020-04-04T23:36:08+08:00">2020-04-04</time>
             </span>
           
             
@@ -264,9 +264,22 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-03 17:25:36" itemprop="dateModified" datetime="2020-04-03T17:25:36+08:00">2020-04-03</time>
+                <time title="Modified: 2020-04-28 10:38:37" itemprop="dateModified" datetime="2020-04-28T10:38:37+08:00">2020-04-28</time>
               </span>
             
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -280,16 +293,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="IjkPlayerLibrary"><a href="#IjkPlayerLibrary" class="headerlink" title="IjkPlayerLibrary"></a>IjkPlayerLibrary</h1><p>B站开源播放器编译库(20160819),版本为Ijkplayer-k0.6.0  </p><h3 id="Ubuntu环境下编译B站开源视频播放器"><a href="#Ubuntu环境下编译B站开源视频播放器" class="headerlink" title="Ubuntu环境下编译B站开源视频播放器"></a>Ubuntu环境下编译B站开源视频播放器</h3><h4 id="编译前准备"><a href="#编译前准备" class="headerlink" title="编译前准备"></a>编译前准备</h4><pre><code>Linux环境：本地使用Ubuntu Kylin 15.10
-下载Linux：Java JDK，Android SDK，Android NDK，Git
-
-Ps：由于需要编译ffmpeg，所以在配置环境变量后要保证足够磁盘空间
-
-原来配置android-ndk-r11b 编译过程中报错：需要android-ndk-r10e及其之后的版本</code></pre>
+          <h5 id="Activity的启动流程"><a href="#Activity的启动流程" class="headerlink" title="Activity的启动流程"></a>Activity的启动流程</h5><p>向AMS发送startActivity请求<br>如果应用没启动，通过Socket向zygote发送启动进程请求<br>zygote收到以后，会去启动应用进程<br>应用进程启动之后就会向AMS发起attachApplication的IPC调用，目的是注册ApplicationThread<br>接下来AMS会向应用发起bindApplication的IPC调用，目的是初始化应用Application<br>完了之后，AMS又向应用发起了scheduleLaunchActivity的IPC调用，目的是给应用执行和加载Activity，并且执行Activity的生命周期</p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2016/08/19/IjkPlayerLibrary-V0-6-0/#more" rel="contents">
+              <a class="btn" href="/2020/04/04/Android_Activity的启动流程/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -318,7 +326,7 @@ Ps：由于需要编译ffmpeg，所以在配置环境变量后要保证足够磁
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2016/08/19/TagCloud/">
+    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/04/ARouter路由框架整理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WANG.MH">
@@ -332,7 +340,7 @@ Ps：由于需要编译ffmpeg，所以在配置环境变量后要保证足够磁
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2016/08/19/TagCloud/" class="post-title-link" itemprop="url">TagCloud</a>
+            <a href="/2020/04/04/ARouter路由框架整理/" class="post-title-link" itemprop="url">ARouter路由框架整理</a>
           
         </h1>
 
@@ -349,7 +357,7 @@ Ps：由于需要编译ffmpeg，所以在配置环境变量后要保证足够磁
                 
               
 
-              <time title="Created: 2016-08-19 10:00:00" itemprop="dateCreated datePublished" datetime="2016-08-19T10:00:00+08:00">2016-08-19</time>
+              <time title="Created: 2020-04-04 23:35:49" itemprop="dateCreated datePublished" datetime="2020-04-04T23:35:49+08:00">2020-04-04</time>
             </span>
           
             
@@ -360,8 +368,191 @@ Ps：由于需要编译ffmpeg，所以在配置环境变量后要保证足够磁
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-10 17:51:54" itemprop="dateModified" datetime="2020-04-10T17:51:54+08:00">2020-04-10</time>
+                <time title="Modified: 2020-04-27 06:54:27" itemprop="dateModified" datetime="2020-04-27T06:54:27+08:00">2020-04-27</time>
               </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="ARouter"><a href="#ARouter" class="headerlink" title="ARouter"></a>ARouter</h5>
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/04/FFmpeg参数描述/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WANG.MH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枫曾留下证明">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/04/04/FFmpeg参数描述/" class="post-title-link" itemprop="url">FFmpeg参数描述</a>
+          
+        </h1>
+
+        <div class="post-meta">
+
+	  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-04-04 23:35:17 / Modified: 23:51:24" itemprop="dateCreated datePublished" datetime="2020-04-04T23:35:17+08:00">2020-04-04</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/FFmpeg/" itemprop="url" rel="index"><span itemprop="name">FFmpeg</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="FFmpeg参数描述"><a href="#FFmpeg参数描述" class="headerlink" title="FFmpeg参数描述"></a>FFmpeg参数描述</h5><p>基本选项:<br>-formats    输出所有可用格式<br>-f  fmt    指定格式(音频或视频格式)<br>-i filename    指定输入文件名，在linux下当然也能指定:0.0(屏幕录制)或摄像头<br>-y    覆盖已有文件<br>-t duration    记录时长为t<br>-fs limit_size    设置文件大小上限<br>-ss time_off    从指定的时间(s)开始，  [-]hh:mm:ss[.xxx]的格式也支持<br>-itsoffset time_off    设置时间偏移(s)，该选项影响所有后面的输入文件。该偏移被加到输入文件的时戳，定义一个正偏移意味着相应的流被延迟了 offset秒。 [-]hh:mm:ss[.xxx]的格式也支持<br>-title string    标题<br>-timestamp time    时间戳<br>-author  string    作者<br>-copyright string    版权信息<br>-comment string    评论<br>-album string    album名<br>-v verbose    与log相关的<br>-target type    设置目标文件类型(“vcd”, “svcd”,  “dvd”, “dv”, “dv50”, “pal-vcd”, “ntsc-svcd”, …)<br>-dframes number    设置要记录的帧数<br>视频选项:<br>-b    指定比特率(bits/s)，似乎ffmpeg是自动VBR的，指定了就大概是平均比特率<br>-bitexact    使用标准比特率<br>-vb    指定视频比特率(bits/s)<br>-vframes  number    设置转换多少桢(frame)的视频<br>-r rate    帧速率(fps) （可以改，确认非标准桢率会导致音画不同步，所以只能设定为15或者29.97）<br>-s size    指定分辨率 (320x240)<br>-aspect aspect    设置视频长宽比(4:3, 16:9 or 1.3333, 1.7777)<br>-croptop  size    设置顶部切除尺寸(in pixels)<br>-cropbottom size    设置底部切除尺寸(in pixels)<br>-cropleft size    设置左切除尺寸 (in pixels)<br>-cropright size    设置右切除尺寸 (in pixels)<br>-padtop size    设置顶部补齐尺寸(in  pixels)<br>-padbottom size    底补齐(in pixels)<br>-padleft size    左补齐(in pixels)<br>-padright size    右补齐(in pixels)<br>-padcolor color    补齐带颜色(000000-FFFFFF)<br>-vn    取消视频<br>-vcodec  codec    强制使用codec编解码方式(‘copy’ to copy stream)<br>-sameq    使用同样视频质量作为源（VBR）<br>-pass n    选择处理遍数（1或者2）。两遍编码非常有用。第一遍生成统计信息，第二遍生成精确的请求的码率<br>-passlogfile file    选择两遍的纪录文件名为file<br>-newvideo    在现在的视频流后面加入新的视频流</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2020/04/04/FFmpeg参数描述/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/04/GIT设置代理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WANG.MH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枫曾留下证明">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/04/04/GIT设置代理/" class="post-title-link" itemprop="url">GIT设置代理</a>
+          
+        </h1>
+
+        <div class="post-meta">
+
+	  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-04-04 23:13:19 / Modified: 23:15:49" itemprop="dateCreated datePublished" datetime="2020-04-04T23:13:19+08:00">2020-04-04</time>
+            </span>
+          
+            
+
             
           
             <span class="post-meta-item">
@@ -389,7 +580,16 @@ Ps：由于需要编译ffmpeg，所以在配置环境变量后要保证足够磁
     <div class="post-body" itemprop="articleBody">
 
       
-          <h5 id="TagCloud"><a href="#TagCloud" class="headerlink" title="TagCloud"></a>TagCloud</h5>
+          <h5 id="GIT代理设置，加速clone"><a href="#GIT代理设置，加速clone" class="headerlink" title="GIT代理设置，加速clone"></a>GIT代理设置，加速clone</h5><p>首先你得有ss客户端和账号： 客户端下载接：<a href="https://shadowsocks.org/en/download/clients.html" target="_blank" rel="noopener">https://shadowsocks.org/en/download/clients.html</a> 账号可以在网上找免费的。</p><p>确保你的ss客户端正常连接<br>打开命令行输入以下代码：<br>git config –global http.proxy ‘socks5://127.0.0.1:1080’<br>git config –global https.proxy ‘socks5://127.0.0.1:1080’</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2020/04/04/GIT设置代理/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -413,7 +613,7 @@ Ps：由于需要编译ffmpeg，所以在配置环境变量后要保证足够磁
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2016/08/19/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/04/Android富文本功能记录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WANG.MH">
@@ -427,7 +627,7 @@ Ps：由于需要编译ffmpeg，所以在配置环境变量后要保证足够磁
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2016/08/19/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+            <a href="/2020/04/04/Android富文本功能记录/" class="post-title-link" itemprop="url">Android富文本功能记录</a>
           
         </h1>
 
@@ -444,20 +644,25 @@ Ps：由于需要编译ffmpeg，所以在配置环境变量后要保证足够磁
                 
               
 
-              <time title="Created: 2016-08-19 00:00:00" itemprop="dateCreated datePublished" datetime="2016-08-19T00:00:00+08:00">2016-08-19</time>
+              <time title="Created: 2020-04-04 21:28:46 / Modified: 21:34:31" itemprop="dateCreated datePublished" datetime="2020-04-04T21:28:46+08:00">2020-04-04</time>
             </span>
           
             
 
             
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-04 00:13:34" itemprop="dateModified" datetime="2020-04-04T00:13:34+08:00">2020-04-04</time>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
               </span>
-            
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -471,11 +676,533 @@ Ps：由于需要编译ffmpeg，所以在配置环境变量后要保证足够磁
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+          <h4 id="Android富文本功能记录"><a href="#Android富文本功能记录" class="headerlink" title="Android富文本功能记录"></a>Android富文本功能记录</h4><p>从assets中加载本地WebView模板</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getAssetsHtml</span><span class="params">(Context context, WebView webView,String contentText)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			AssetManager assetManager = context.getAssets();</span><br><span class="line">			<span class="comment">//InputStream stream = assetManager.open("page.html");</span></span><br><span class="line">			InputStream stream = assetManager.open(<span class="string">"newsyun.html"</span>);</span><br><span class="line">			BufferedReader r = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(stream));</span><br><span class="line">			StringBuilder total = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">			String line;</span><br><span class="line">			<span class="keyword">while</span> ((line = r.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">				total.append(line).append(<span class="string">"\n"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//String str_div_container = "&lt;div class=\"newsyun_container\"&gt;&lt;/div&gt;";</span></span><br><span class="line">			String str_div_container = <span class="string">"&lt;body&gt;BODY_CONTAINER&lt;/body&gt;"</span>;</span><br><span class="line">			<span class="keyword">if</span> (total.toString().contains(str_div_container))&#123;</span><br><span class="line">				String[] split = total.toString().split(str_div_container, -<span class="number">1</span>);</span><br><span class="line">				String newString = split[<span class="number">0</span>] +  contentText + split[<span class="number">1</span>];</span><br><span class="line">				webView.loadDataWithBaseURL(<span class="keyword">null</span>, newString, <span class="string">"text/html"</span>, <span class="string">"UTF-8"</span>, <span class="keyword">null</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//webView.loadDataWithBaseURL(null, total.toString(), "text/html", "UTF-8", null);</span></span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception xxx) &#123;</span><br><span class="line">			Log.e(TAG, <span class="string">"Load assets/page.html"</span>, xxx);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2016/08/19/hello-world/#more" rel="contents">
+              <a class="btn" href="/2020/04/04/Android富文本功能记录/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/04/EditText添加CustomLengthFilter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WANG.MH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枫曾留下证明">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/04/04/EditText添加CustomLengthFilter/" class="post-title-link" itemprop="url">EditText添加CustomLengthFilter</a>
+          
+        </h1>
+
+        <div class="post-meta">
+
+	  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-04-04 20:56:44 / Modified: 21:00:13" itemprop="dateCreated datePublished" datetime="2020-04-04T20:56:44+08:00">2020-04-04</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="CustomLengthFilter-搜索结果中对于长度的过滤，半角全角问题"><a href="#CustomLengthFilter-搜索结果中对于长度的过滤，半角全角问题" class="headerlink" title="CustomLengthFilter 搜索结果中对于长度的过滤，半角全角问题"></a>CustomLengthFilter 搜索结果中对于长度的过滤，半角全角问题</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.tangyin.mobile.newsyun.utils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.text.InputFilter.LengthFilter;</span><br><span class="line"><span class="keyword">import</span> android.text.Spanned;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomLengthFilter</span> <span class="keyword">extends</span> <span class="title">LengthFilter</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> max;<span class="comment">// 字符串能输入的最大长度</span></span><br><span class="line">    <span class="keyword">private</span> onFullListener listener;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> max</span></span><br><span class="line"><span class="comment">     *            字符串能输入的最大长度，半角字符算1，全角字符算2</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomLengthFilter</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span> max)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(max);</span><br><span class="line">        <span class="keyword">this</span>.max = max;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> CharSequence <span class="title">filter</span><span class="params">(CharSequence source, <span class="keyword">int</span> start, <span class="keyword">int</span> end,</span></span></span><br><span class="line"><span class="function"><span class="params">            Spanned dest, <span class="keyword">int</span> dstart, <span class="keyword">int</span> dend)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> mlength = getLength(dest.subSequence(dstart, dend).toString());<span class="comment">// 修改字符串的长度</span></span><br><span class="line">        <span class="keyword">int</span> dlength = getLength(dest.toString());<span class="comment">// 已有字符串的长度</span></span><br><span class="line">        <span class="keyword">int</span> slength = getLength(source.subSequence(start, end).toString());<span class="comment">// 要增加的字符串的长度</span></span><br><span class="line">        <span class="keyword">int</span> keep = <span class="keyword">this</span>.max - (dlength - mlength);<span class="comment">// 还差多少字符到最大长度</span></span><br><span class="line">        <span class="keyword">if</span> (keep &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">// 已经到达最大长度</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">null</span> != listener) &#123;</span><br><span class="line">                listener.isFull();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (keep &gt;= slength) &#123;</span><br><span class="line">            <span class="comment">// 还没到达最大长度</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 超出最大长度</span></span><br><span class="line">            <span class="keyword">int</span> tmp = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> index;</span><br><span class="line">            <span class="keyword">for</span> (index = start; index &lt;= end; index++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (isFullwidthCharacter(source.charAt(index))) &#123;</span><br><span class="line">                    tmp += <span class="number">2</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    tmp += <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (tmp &gt; keep) &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">null</span> != listener) &#123;</span><br><span class="line">                listener.isFull();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> source.subSequence(start, index);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOnFullListener</span><span class="params">(onFullListener listener)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.listener = listener;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">onFullListener</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 这个方法会在输入字符串超出极限时被调用</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">isFull</span><span class="params">()</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 判断字符串是否为空或空串</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> str</span></span><br><span class="line"><span class="comment">     *            待判断的字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> true：字符串为空或空串</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isNull</span><span class="params">(<span class="keyword">final</span> String str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> == str || <span class="string">""</span>.equals(str)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取字符串长度（半角算1、全角算2）</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> str</span></span><br><span class="line"><span class="comment">     *            字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 字符串长度</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getLength</span><span class="params">(<span class="keyword">final</span> String str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isNull(str)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> len = str.length();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (isFullwidthCharacter(str.charAt(i))) &#123;</span><br><span class="line">                len = len + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> len;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取字符串的全角字符数</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> str</span></span><br><span class="line"><span class="comment">     *            待计算的字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 字符串的全角字符数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getFwCharNum</span><span class="params">(<span class="keyword">final</span> String str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isNull(str)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (isFullwidthCharacter(str.charAt(i))) &#123;</span><br><span class="line">                num++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 判断字符是否为全角字符</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> ch</span></span><br><span class="line"><span class="comment">     *            待判断的字符</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> true：全角； false：半角</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isFullwidthCharacter</span><span class="params">(<span class="keyword">final</span> <span class="keyword">char</span> ch)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (ch &gt;= <span class="number">32</span> &amp;&amp; ch &lt;= <span class="number">127</span>) &#123;</span><br><span class="line">            <span class="comment">// 基本拉丁字母（即键盘上可见的，空格、数字、字母、符号）</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (ch &gt;= <span class="number">65377</span> &amp;&amp; ch &lt;= <span class="number">65439</span>) &#123;</span><br><span class="line">            <span class="comment">// 日文半角片假名和符号</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/04/Hexo_Next主题自定义样式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WANG.MH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枫曾留下证明">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/04/04/Hexo_Next主题自定义样式/" class="post-title-link" itemprop="url">Hexo_Next主题自定义样式</a>
+          
+        </h1>
+
+        <div class="post-meta">
+
+	  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-04-04 20:00:00 / Modified: 20:23:49" itemprop="dateCreated datePublished" datetime="2020-04-04T20:00:00+08:00">2020-04-04</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="Hexo-Next主题自定义样式修改"><a href="#Hexo-Next主题自定义样式修改" class="headerlink" title="Hexo Next主题自定义样式修改"></a>Hexo Next主题自定义样式修改</h4><ol>
+<li>修改字体 &amp; 行高</li>
+</ol><blockquote>
+<p>找到文件：source\css_variables\base.styl</p>
+</blockquote><blockquote>
+<p>修改：$font-size-large = $font-size-base + 2px为：$font-size-large = $font-size-base。</p>
+</blockquote>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2020/04/04/Hexo_Next主题自定义样式/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/04/GIT相关操作记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WANG.MH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枫曾留下证明">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/04/04/GIT相关操作记录/" class="post-title-link" itemprop="url">GIT相关操作</a>
+          
+        </h1>
+
+        <div class="post-meta">
+
+	  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-04-04 20:00:00 / Modified: 20:18:50" itemprop="dateCreated datePublished" datetime="2020-04-04T20:00:00+08:00">2020-04-04</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/GIT/" itemprop="url" rel="index"><span itemprop="name">GIT</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="GIT相关操作"><a href="#GIT相关操作" class="headerlink" title="GIT相关操作"></a>GIT相关操作</h4><blockquote>
+<p>git提交<br>git提交规范，注释规范，接口规范，cache规范，依赖规范，等等，并把规范自动化<br>举个例子，git注释，可以分几个大括号，bugid，需求id，用于跟踪统计。<br>设置git门禁</p>
+</blockquote><p>1.git相关操作<br>Link: <a href="https://fangjie.me/2017/08/22/git%E4%BD%BF%E7%94%A8%E8%BF%9B%E9%98%B6/" target="_blank" rel="noopener">https://fangjie.me/2017/08/22/git%E4%BD%BF%E7%94%A8%E8%BF%9B%E9%98%B6/</a></p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2020/04/04/GIT相关操作记录/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/04/Markdown常用语法汇总/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WANG.MH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枫曾留下证明">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/04/04/Markdown常用语法汇总/" class="post-title-link" itemprop="url">Markdown常用语法汇总</a>
+          
+        </h1>
+
+        <div class="post-meta">
+
+	  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-04-04 18:00:00 / Modified: 19:38:24" itemprop="dateCreated datePublished" datetime="2020-04-04T18:00:00+08:00">2020-04-04</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Tools/" itemprop="url" rel="index"><span itemprop="name">Tools</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="Markdown常用语法汇总"><a href="#Markdown常用语法汇总" class="headerlink" title="Markdown常用语法汇总"></a>Markdown常用语法汇总</h4><ol>
+<li>H1,H2,H3,H4,H5,H6 #符号的用法</li>
+</ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 这是一级标题</span><br><span class="line">## 这是二级标题</span><br><span class="line">### 这是三级标题</span><br><span class="line">#### 这是四级标题</span><br><span class="line">##### 这是五级标题</span><br><span class="line">###### 这是六级标题</span><br></pre></td></tr></table></figure><ol start="2">
+<li>字体的操作</li>
+</ol><blockquote>
+<p>a. 加粗:要加粗的文字左右分别用两个星号包起来<br>b. 斜体:要倾斜的文字左右分别用一个星号包起来<br>c. 斜体加粗:要倾斜和加粗的文字左右分别用三个*星号包起来<br>d. 删除线:要加删除线的文字左右分别用两个~~波浪号包起来</p>
+</blockquote>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2020/04/04/Markdown常用语法汇总/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https//www.wangmenghua.com/2020/04/04/Android_Binder机制理解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WANG.MH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枫曾留下证明">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/04/04/Android_Binder机制理解/" class="post-title-link" itemprop="url">Android_Binder机制理解</a>
+          
+        </h1>
+
+        <div class="post-meta">
+
+	  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-04-04 14:07:00" itemprop="dateCreated datePublished" datetime="2020-04-04T14:07:00+08:00">2020-04-04</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-26 17:10:52" itemprop="dateModified" datetime="2020-04-26T17:10:52+08:00">2020-04-26</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="Binder与传统IPC对比"><a href="#Binder与传统IPC对比" class="headerlink" title="Binder与传统IPC对比"></a>Binder与传统IPC对比</h5><table>
+<thead>
+<tr>
+<th>NAME/VALUE</th>
+<th>Binder</th>
+<th>共享内存</th>
+<th>Socket</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>性能</td>
+<td>需要拷贝一次</td>
+<td>无需拷贝</td>
+<td>需要拷贝两次</td>
+</tr>
+<tr>
+<td>特点</td>
+<td>基于C/S架构，易用性高</td>
+<td>控制复杂，易用性差</td>
+<td>基于C/S架构，作为一款通用接口，其传输效率低，开销大</td>
+</tr>
+<tr>
+<td>安全性</td>
+<td>为每个APP分配UID，同时支持实名与匿名</td>
+<td>依赖上层协议，访问接入点是开放的，不安全</td>
+<td>依赖上层协议，访问接入点是开放的，不安全</td>
+</tr>
+</tbody></table>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2020/04/04/Android_Binder机制理解/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -503,7 +1230,7 @@ Ps：由于需要编译ffmpeg，所以在配置环境变量后要保证足够磁
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -548,7 +1275,7 @@ Ps：由于需要编译ffmpeg，所以在配置环境变量后要保证足够磁
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">74</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
